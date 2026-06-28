@@ -606,9 +606,18 @@
             }
 
 
-            const encoded = btoa(pass.trim()).split("").reverse().join("");
+            const encodedNormal = btoa(pass.trim());
 
-            if (cloud[profile].senha !== encoded) {
+            const encodedReverse = btoa(pass.trim())
+                .split("")
+                .reverse()
+                .join("");
+
+
+            if (
+                cloud[profile].senha !== encodedNormal &&
+                cloud[profile].senha !== encodedReverse
+            ) {
 
                 alert("Senha incorreta!");
                 return;

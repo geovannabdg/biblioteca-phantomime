@@ -572,10 +572,21 @@
 
             if (master !== MASTER_PASSWORD) {
                 alert("Acesso negado");
-                return false;
+                return;
             }
 
-            return true;
+            const id = prompt("Qual perfil você quer acessar?");
+
+            if (!id) {
+                return;
+            }
+
+            document.getElementById("profileId").value = id;
+
+            const cloud = loadCloud();
+
+            loadProfile();
+
         }
 
         function render() {

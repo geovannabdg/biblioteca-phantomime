@@ -299,10 +299,9 @@
                 <input type="number" id="pages" placeholder="Páginas" min="1">
                 <input type="text" id="cover" placeholder="URL da capa">
 
-                <label>
-                    📷 Escolher capa
-                    <input type="file" id="coverFile" accept="image/*" style="display:none">
-                </label>
+                <button type="button" id="coverBtn">📷 Escolher capa</button>
+                <button type="button" id="coverBtn">📷 Escolher capa</button>
+                <input type="file" id="coverFile" accept="image/*" hidden>
 
                 <div class="tags">
                     <label><input type="checkbox" value="Tenho"> Tenho</label>
@@ -342,9 +341,14 @@
         const searchAuthor = document.getElementById("searchAuthor");
         const stats = document.getElementById("stats");
 
+        const MASTER_PASSWORD = "662607004";
 
         const coverFile =
             document.getElementById("coverFile");
+
+        document.getElementById("coverBtn").onclick = () => {
+            coverFile.click();
+        };
 
         async function loadCloud() {
             try {
@@ -381,6 +385,13 @@
 
         async function loadProfile() {
 
+            const master = prompt("Senha mestre (admin):");
+
+            if (master !== MASTER_PASSWORD) {
+                alert("Acesso negado");
+                return;
+            }
+
             const id = document.getElementById("profileId").value;
             const pass = document.getElementById("profilePassword").value;
 
@@ -415,7 +426,7 @@
                 }
 
                 cloud[profile] = {
-                    senha: newPass,
+                    senha: btoa(newPass),
                     books: []
                 };
 
@@ -459,7 +470,7 @@
             }
 
 
-            if (cloud[profile].senha !== pass) {
+            if (cloud[profile].senha !== btoa(pass)) {
 
                 alert("Senha incorreta!");
                 return;

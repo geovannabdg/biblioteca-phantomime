@@ -345,8 +345,6 @@
         const searchAuthor = document.getElementById("searchAuthor");
         const stats = document.getElementById("stats");
 
-        const MASTER_PASSWORD = "662607004";
-
         const coverFile =
             document.getElementById("coverFile");
 
@@ -570,9 +568,67 @@
 
             const master = prompt("Senha mestre:");
 
-            if (master !== MASTER_PASSWORD) {
-                alert("Acesso negado");
-                return;
+            async function adminAccess() {
+
+                const master = prompt("Senha mestre:");
+
+                const res = await fetch(
+                    "https://phantomime-backend.onrender.com/admin/login",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            password: master
+                        })
+                    }
+                );
+
+
+                const data = await res.json();
+
+
+                if (!data.success) {
+
+                    alert("Acesso negado");
+                    return;
+
+                }
+
+
+                const id = prompt("Qual perfil você quer acessar?");
+
+
+                if (!id) return;
+
+
+                const cloud = await loadCloud();
+
+
+                if (!cloud[id]) {
+
+                    alert("Perfil não encontrado");
+                    return;
+
+                }
+
+
+                profile = id;
+
+                books = cloud[id].books || [];
+
+                books = books.filter(b => b && b.title);
+
+
+                document.getElementById("profileLabel").innerText =
+                    "Perfil ativo: " + profile;
+
+
+                createTabs();
+                render();
+                updateStats();
+
             }
 
             const id = prompt("Qual perfil você quer acessar?");

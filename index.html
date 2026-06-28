@@ -277,15 +277,20 @@
 
             <input type="password" id="profilePassword" placeholder="Senha" style="width:150px">
 
-            <button onclick="createProfile()">Criar perfil</button>
+            <button onclick="loadProfile()">
+                Entrar
+            </button>
+
+            <button onclick="createProfile()">
+                Criar perfil
+            </button>
 
             <div id="profileLabel" class="small"></div>
 
             <button onclick="adminAccess()">
-
-
                 🔐 Admin
             </button>
+
         </div>
 
         <div class="panel">
@@ -397,9 +402,17 @@
 
         async function createProfile() {
 
-            const name = prompt("Nome do perfil:");
+            const name = document
+                .getElementById("profileId")
+                .value.trim();
 
-            if (!name) return;
+
+            if (!name) {
+
+                alert("Digite um nome de perfil");
+                return;
+
+            }
 
 
             const cloud = await loadCloud();
@@ -411,7 +424,7 @@
 
             if (exists) {
 
-                alert("Esse perfil já existe!");
+                alert("Esse nome já está em uso!");
                 return;
 
             }
@@ -424,7 +437,11 @@
 
             cloud[name] = {
 
-                senha: btoa(password).split("").reverse().join(""),
+                senha: btoa(password)
+                    .split("")
+                    .reverse()
+                    .join(""),
+
                 books: []
 
             };
@@ -435,6 +452,7 @@
 
             alert("Perfil criado!");
 
+        
 
             document.getElementById("profileId").value = name;
 
@@ -1255,7 +1273,7 @@ ISBN: ${b.isbn || ""}
 
         }
 
-        
+
     </script>
 
 </body>

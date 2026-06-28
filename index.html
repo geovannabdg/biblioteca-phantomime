@@ -476,6 +476,58 @@
 
             const cloud = await loadCloud();
 
+            // Corrige perfis antigos
+            let changed = false;
+
+
+            Object.keys(cloud).forEach(key => {
+
+                const p = cloud[key];
+
+
+                if (p && p.senha) {
+
+
+                    // se a senha ainda não está no formato novo
+                    const old = p.senha;
+
+
+                    try {
+
+                        const decoded =
+                            atob(old.split("").reverse().join(""));
+
+
+                        if (decoded) {
+
+                            cloud[key].senha =
+                                btoa(decoded)
+                                    .split("")
+                                    .reverse()
+                                    .join("");
+
+                            changed = true;
+
+                        }
+
+
+                    } catch (e) {
+
+                        // já está no formato novo
+
+                    }
+
+                }
+
+            });
+
+
+            if (changed) {
+
+                await saveCloud(cloud);
+
+            }
+
             // compatibilidade com perfis antigos
             if (!cloud[id]) {
 

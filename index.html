@@ -577,29 +577,34 @@
 
             const id = prompt("Qual perfil você quer acessar?");
 
-            if (!id) {
-                return;
-            }
+            if (!id) return;
 
-            document.getElementById("profileId").value = id;
-
-            document.getElementById("profilePassword").value = "";
 
             const cloud = await loadCloud();
+
 
             if (!cloud[id]) {
                 alert("Perfil não encontrado");
                 return;
             }
 
+
             profile = id;
+
 
             books = cloud[id].books || [];
 
             books = books.filter(b => b && b.title);
 
+
+            document.getElementById("profileId").value = id;
+
+            document.getElementById("profilePassword").value = "";
+
+
             document.getElementById("profileLabel").innerText =
                 "Perfil ativo: " + profile;
+
 
             createTabs();
             render();

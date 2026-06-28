@@ -445,7 +445,7 @@
                     return;
                 }
 
-                cloud[profile].senha = newPass;
+                cloud[profile].senha = btoa(newPass);
 
                 await saveCloud(cloud);
 
@@ -473,12 +473,9 @@
                 cloud[profile].senha !== pass &&
                 cloud[profile].senha !== btoa(pass)
             ) {
-
                 alert("Senha incorreta!");
                 return;
-
             }
-
 
             books = cloud[profile].books || [];
 

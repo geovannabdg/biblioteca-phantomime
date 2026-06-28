@@ -273,7 +273,7 @@
 
             <button onclick="adminAccess()">
 
-        
+
                 🔐 Admin
             </button>
         </div>
@@ -469,7 +469,10 @@
             }
 
 
-            if (cloud[profile].senha !== btoa(pass)) {
+            if (
+                cloud[profile].senha !== pass &&
+                cloud[profile].senha !== btoa(pass)
+            ) {
 
                 alert("Senha incorreta!");
                 return;

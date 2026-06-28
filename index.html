@@ -78,7 +78,7 @@
             border: none;
             font-family: inherit;
             background: rgba(255, 255, 255, 0.08);
-            color: white;
+            color: var(--text);
             border: 1px solid rgba(76, 201, 255, 0.3);
             outline: none;
             transition: .3s;
@@ -96,7 +96,7 @@
             border: none;
             font-family: inherit;
             background: linear-gradient(135deg, #1f6fb2, #4cc9ff);
-            color: white;
+            color: var(--text);
             cursor: pointer;
             transition: .2s;
         }
@@ -113,7 +113,7 @@
 
         button {
             background: var(--water);
-            color: white;
+            color: var(--text);
             cursor: pointer;
             transition: .3s;
         }
@@ -245,6 +245,15 @@
             background: rgba(255, 255, 255, 0.05);
             padding: 10px;
             border-radius: 10px;
+        }
+
+        .card,
+        .card h3,
+        .small,
+        .tag,
+        .tab,
+        label {
+            color: var(--text);
         }
     </style>
 </head>

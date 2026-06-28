@@ -423,8 +423,7 @@
                 }
 
                 cloud[profile] = {
-                    senha: btoa(newPass),
-                    books: []
+                    senha: btoa(newPass).split("").reverse().join("")
                 };
 
                 document.getElementById("profilePassword").value = newPass;
@@ -443,7 +442,7 @@
                     return;
                 }
 
-                cloud[profile].senha = btoa(newPass);
+                cloud[profile].senha = btoa(newPass).split("").reverse().join("");
 
                 await saveCloud(cloud);
 
@@ -467,10 +466,9 @@
             }
 
 
-            if (
-                cloud[profile].senha !== pass &&
-                cloud[profile].senha !== btoa(pass)
-            ) {
+            const encoded = btoa(pass).split("").reverse().join("");
+
+            if (cloud[profile].senha !== encoded) {
                 alert("Senha incorreta!");
                 return;
             }

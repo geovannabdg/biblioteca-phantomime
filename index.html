@@ -452,7 +452,7 @@
 
             alert("Perfil criado!");
 
-        
+
 
             document.getElementById("profileId").value = name;
 
@@ -461,8 +461,10 @@
         async function loadProfile() {
 
 
-
-            const id = document.getElementById("profileId").value.trim();
+            const id = document
+                .getElementById("profileId")
+                .value
+                .trim();
             const pass = document.getElementById("profilePassword").value.trim();
 
             if (!id) {
@@ -552,11 +554,13 @@
             }
 
 
-            const encoded = btoa(pass).split("").reverse().join("");
+            const encoded = btoa(pass.trim()).split("").reverse().join("");
 
             if (cloud[profile].senha !== encoded) {
+
                 alert("Senha incorreta!");
                 return;
+
             }
 
             books = cloud[profile].books || [];

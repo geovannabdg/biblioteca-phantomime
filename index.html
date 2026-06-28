@@ -280,6 +280,7 @@
             <button onclick="createProfile()">Criar perfil</button>
 
             <div id="profileLabel" class="small"></div>
+            <div id="profileList" class="small"></div>
 
             <button onclick="adminAccess()">
 
@@ -405,7 +406,11 @@
             const cloud = await loadCloud();
 
 
-            if (cloud[name]) {
+            const exists = Object.keys(cloud)
+                .some(p => p.toLowerCase() === name.toLowerCase());
+
+
+            if (exists) {
 
                 alert("Esse perfil já existe!");
                 return;
@@ -433,6 +438,38 @@
 
 
             document.getElementById("profileId").value = name;
+            showProfiles();
+
+        }
+
+        async function showProfiles() {
+
+            const cloud = await loadCloud();
+
+            const area = document.getElementById("profileList");
+
+            area.innerHTML = "<b>Perfis disponíveis:</b><br>";
+
+
+
+            Object.keys(cloud).forEach(name => {
+
+
+                const btn = document.createElement("button");
+
+                btn.innerText = name;
+
+
+                btn.onclick = () => {
+
+                    document.getElementById("profileId").value = name;
+
+                };
+
+
+                area.appendChild(btn);
+
+            });
 
         }
 
@@ -1251,6 +1288,7 @@ ISBN: ${b.isbn || ""}
 
         }
 
+        showProfiles();
 
     </script>
 

@@ -440,37 +440,6 @@
 
         }
 
-        async function showProfiles() {
-
-            const cloud = await loadCloud();
-
-            const area = document.getElementById("profileList");
-
-            area.innerHTML = "<b>Perfis disponíveis:</b><br>";
-
-
-
-            Object.keys(cloud).forEach(name => {
-
-
-                const btn = document.createElement("button");
-
-                btn.innerText = name;
-
-
-                btn.onclick = () => {
-
-                    document.getElementById("profileId").value = name;
-
-                };
-
-
-                area.appendChild(btn);
-
-            });
-
-        }
-
         async function loadProfile() {
 
 

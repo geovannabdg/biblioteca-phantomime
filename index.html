@@ -613,10 +613,11 @@
                 .reverse()
                 .join("");
 
-
+            const encodedOld = cloud[profile].senha;
             if (
                 cloud[profile].senha !== encodedNormal &&
-                cloud[profile].senha !== encodedReverse
+                cloud[profile].senha !== encodedReverse &&
+                cloud[profile].senha !== pass.trim()
             ) {
 
                 alert("Senha incorreta!");

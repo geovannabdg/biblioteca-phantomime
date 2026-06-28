@@ -566,7 +566,7 @@
 
         }
 
-        function adminAccess() {
+        async function adminAccess() {
 
             const master = prompt("Senha mestre:");
 
@@ -583,9 +583,27 @@
 
             document.getElementById("profileId").value = id;
 
-            const cloud = loadCloud();
+            document.getElementById("profilePassword").value = "";
 
-            loadProfile();
+            const cloud = await loadCloud();
+
+            if (!cloud[id]) {
+                alert("Perfil não encontrado");
+                return;
+            }
+
+            profile = id;
+
+            books = cloud[id].books || [];
+
+            books = books.filter(b => b && b.title);
+
+            document.getElementById("profileLabel").innerText =
+                "Perfil ativo: " + profile;
+
+            createTabs();
+            render();
+            updateStats();
 
         }
 

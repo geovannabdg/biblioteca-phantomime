@@ -273,11 +273,12 @@
         </div>
 
         <div class="profileBox">
-            <input type="number" id="profileId" placeholder="Número do perfil" style="width:150px">
+            <input type="text" id="profileId" placeholder="Nome do perfil" style="width:150px">
 
             <input type="password" id="profilePassword" placeholder="Senha" style="width:150px">
 
-            <button onclick="loadProfile()">Entrar</button>
+            <button onclick="createProfile()">Criar perfil</button>
+
             <div id="profileLabel" class="small"></div>
 
             <button onclick="adminAccess()">
@@ -394,12 +395,53 @@
 
         }
 
+        async function createProfile() {
+
+            const name = prompt("Nome do perfil:");
+
+            if (!name) return;
+
+
+            const cloud = await loadCloud();
+
+
+            if (cloud[name]) {
+
+                alert("Esse perfil já existe!");
+                return;
+
+            }
+
+
+            const password = prompt("Crie uma senha:");
+
+            if (!password) return;
+
+
+            cloud[name] = {
+
+                senha: btoa(password).split("").reverse().join(""),
+                books: []
+
+            };
+
+
+            await saveCloud(cloud);
+
+
+            alert("Perfil criado!");
+
+
+            document.getElementById("profileId").value = name;
+
+        }
+
         async function loadProfile() {
 
 
 
-            const id = document.getElementById("profileId").value;
-            const pass = document.getElementById("profilePassword").value;
+            const id = document.getElementById("profileId").value.trim();
+            const pass = document.getElementById("profilePassword").value.trim();
 
             if (!id) {
                 alert("Digite um número de perfil");
@@ -409,6 +451,19 @@
             profile = id;
 
             const cloud = await loadCloud();
+
+            // compatibilidade com perfis antigos
+            if (!cloud[id]) {
+
+                const oldId = Object.keys(cloud).find(key =>
+                    cloud[key].nome === id
+                );
+
+                if (oldId) {
+                    profile = oldId;
+                }
+
+            }
 
             if (Array.isArray(cloud[profile])) {
 

@@ -269,38 +269,29 @@
         }
 
 
-        @media (max-width: 700px) {
+        .book-search button {
+            width: 160px;
+            justify-self: center;
+            grid-column: 1 / -1;
+        }
 
-            .book-search button {
-                justify-self: center;
-                width: auto;
-                min-width: 160px;
+
+        @media (max-width:700px) {
+
+            .book-search {
+                grid-template-columns: 1fr;
             }
+
 
             .book-search input {
                 width: 100%;
                 box-sizing: border-box;
             }
 
-            .book-search button {
-                width: 80%;
-                justify-self: center;
-            }
 
             .book-search button {
                 width: 160px;
                 justify-self: center;
-                padding: 10px;
-            }
-
-
-            @media (max-width: 700px) {
-
-                .book-search button {
-                    width: 160px;
-                    justify-self: center;
-                }
-
             }
 
         }
@@ -363,15 +354,14 @@
 
                     <input type="text" id="searchAuthor" placeholder="Autor (opcional)">
 
-                    <button type="button" onclick="searchISBN()">
+                    <button class="search-btn" type="button" onclick="searchISBN()">
+                        .search-btn {
+                        width: 160px !important;
+                        }
                         🔎 Buscar Livro
                     </button>
 
                 </div>
-
-
-
-        </div>
         <input type="text" id="title" placeholder="Título" required>
         <input type="text" id="author" placeholder="Autor">
         <input type="number" id="price" placeholder="Preço (R$)" step="0.01">

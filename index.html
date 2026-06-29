@@ -258,18 +258,13 @@
 
         .book-search {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 10px;
             grid-column: 1 / -1;
         }
 
         .book-search button {
             grid-column: 1 / -1;
-        }
-
-        .book-search input::placeholder {
-            color: var(--text);
-            opacity: 0.8;
         }
 
 
@@ -333,43 +328,45 @@
 
                 <div class="book-search">
 
-                    <input id="isbn">
+                    <input type="text" id="isbn" placeholder="ISBN">
 
-                    <input id="searchTitle">
+                    <input type="text" id="searchTitle" placeholder="Título para buscar">
 
-                    <input id="searchAuthor">
+                    <input type="text" id="searchAuthor" placeholder="Autor (opcional)">
 
-                    <button type="button" onclick="searchISBN()">
+                    <button type="button" onclick="searchISBN(event)">
                         🔎 Buscar Livro
                     </button>
 
                 </div>
-                <input type="text" id="title" placeholder="Título" required>
-                <input type="text" id="author" placeholder="Autor">
-                <input type="number" id="price" placeholder="Preço (R$)" step="0.01">
-                <input type="number" id="rating" placeholder="Nota 0-5" min="0" max="5">
-                <input type="number" id="pages" placeholder="Páginas" min="1">
-                <input type="text" id="cover" placeholder="URL da capa">
-
-                <button type="button" id="coverBtn">📷 Escolher capa</button>
-                <input type="file" id="coverFile" accept="image/*" hidden>
-
-                <div class="tags">
-                    <label><input type="checkbox" value="Tenho"> Tenho</label>
-                    <label><input type="checkbox" value="Já li"> Já li</label>
-                    <label><input type="checkbox" value="Quero comprar"> Quero comprar</label>
-                    <label><input type="checkbox" value="Emprestei"> Emprestei</label>
-                    <label><input type="checkbox" value="Peguei emprestado"> Peguei emprestado</label>
-                </div>
-
-                <textarea id="review" class="review" placeholder="Sua resenha sobre o livro..."></textarea>
-
-                <button type="submit">Adicionar</button>
-            </form>
-
-            <div class="grid" id="bookList"></div>
 
         </div>
+        <input type="text" id="title" placeholder="Título" required>
+        <input type="text" id="author" placeholder="Autor">
+        <input type="number" id="price" placeholder="Preço (R$)" step="0.01">
+        <input type="number" id="rating" placeholder="Nota 0-5" min="0" max="5">
+        <input type="number" id="pages" placeholder="Páginas" min="1">
+        <input type="text" id="cover" placeholder="URL da capa">
+
+        <button type="button" id="coverBtn">📷 Escolher capa</button>
+        <input type="file" id="coverFile" accept="image/*" hidden>
+
+        <div class="tags">
+            <label><input type="checkbox" value="Tenho"> Tenho</label>
+            <label><input type="checkbox" value="Já li"> Já li</label>
+            <label><input type="checkbox" value="Quero comprar"> Quero comprar</label>
+            <label><input type="checkbox" value="Emprestei"> Emprestei</label>
+            <label><input type="checkbox" value="Peguei emprestado"> Peguei emprestado</label>
+        </div>
+
+        <textarea id="review" class="review" placeholder="Sua resenha sobre o livro..."></textarea>
+
+        <button type="submit">Adicionar</button>
+        </form>
+
+        <div class="grid" id="bookList"></div>
+
+    </div>
     </div>
 
     <script>
@@ -1159,7 +1156,11 @@ ISBN: ${b.isbn || ""}
                 searchAuthor.value.trim();
 
 
-            const button = event.target;
+
+
+            async function searchISBN(event) { }
+
+
 
             button.innerText = "🔎 Buscando...";
 

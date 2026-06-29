@@ -263,16 +263,13 @@
             grid-column: 1 / -1;
         }
 
-
         .book-search button {
-            grid-column: auto;
+            grid-column: 1 / -1;
         }
 
-
-        .book-search button {
-            width: 160px;
-            justify-self: center;
-            grid-column: 1 / -1;
+        .book-search input::placeholder {
+            color: var(--text);
+            opacity: 0.8;
         }
 
 
@@ -280,11 +277,6 @@
 
             .book-search {
                 grid-template-columns: 1fr;
-            }
-
-
-            .book-search button {
-                width: 100%;
             }
 
         }

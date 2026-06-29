@@ -730,7 +730,9 @@
                 const count =
                     s === "Todos"
                         ? validBooks.length
-                        : validBooks.filter(b => b.tags?.includes(s)).length;
+                        : validBooks.filter(b =>
+                            (b.tags || []).includes(s)
+                        ).length;
 
                 const el = document.createElement("div");
 
@@ -1012,7 +1014,9 @@ ISBN: ${b.isbn || ""}
                 return;
             }
 
-            const tags = [...form.querySelectorAll("input[type='checkbox']:checked")].map(c => c.value);
+            const tags = Array.from(
+                form.querySelectorAll("input[type='checkbox']:checked")
+            ).map(c => c.value);
 
             const book = {
 
@@ -1021,7 +1025,7 @@ ISBN: ${b.isbn || ""}
                 title: title.value,
                 isbn: isbn.value,
                 author: author.value,
-                tags: tags,
+                tags: [...tags],
                 price: price.value,
                 rating: rating.value,
                 pages: pages.value,

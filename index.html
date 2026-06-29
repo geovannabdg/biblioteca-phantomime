@@ -261,10 +261,22 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 10px;
             grid-column: 1 / -1;
+            align-items: center;
         }
 
         .book-search button {
+            width: auto;
+            grid-column: auto;
+        }
+
+        .review {
             grid-column: 1 / -1;
+            min-height: 120px;
+        }
+
+
+        form>button[type="submit"] {
+            width: 100%;
         }
 
 
@@ -277,6 +289,10 @@
             .book-search button {
                 width: 160px;
                 justify-self: center;
+            }
+
+            .review {
+                min-height: 120px;
             }
 
         }
@@ -1150,21 +1166,13 @@ ISBN: ${b.isbn || ""}
 
         }
 
-        async function searchISBN() {
+        async function searchISBN(button) {
 
             const isbnValue = isbn.value.replace(/[-\s]/g, "");
 
-            const bookTitle =
-                searchTitle.value.trim();
+            const bookTitle = searchTitle.value.trim();
 
-            const bookAuthor =
-                searchAuthor.value.trim();
-
-
-
-
-            async function searchISBN(button) { }
-
+            const bookAuthor = searchAuthor.value.trim();
 
 
             button.innerText = "🔎 Buscando...";
@@ -1175,173 +1183,69 @@ ISBN: ${b.isbn || ""}
                 let result = null;
 
 
-                // tenta ISBN
-
                 if (isbnValue) {
 
                     let res = await fetch(
                         `https://www.googleapis.com/books/v1/volumes?q=isbn:${isbnValue}`
                     );
 
-
                     let data = await res.json();
 
-
                     if (data.items) {
-
-                        result =
-                            data.items[0].volumeInfo;
-
+                        result = data.items[0].volumeInfo;
                     }
 
                 }
 
 
-
-                // tenta título + autor
-
                 if (!result && bookTitle) {
 
-                    let query =
-                        bookTitle + " " + bookAuthor;
-
+                    let query = bookTitle + " " + bookAuthor;
 
                     let res = await fetch(
                         `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}`
                     );
 
-
                     let data = await res.json();
-
 
                     if (data.items) {
-
-                        result =
-                            data.items[0].volumeInfo;
-
+                        result = data.items[0].volumeInfo;
                     }
 
                 }
-
-
-
-                // tenta Open Library
-
-                if (!result && isbnValue) {
-
-
-                    let res = await fetch(
-                        `https://openlibrary.org/api/books?bibkeys=ISBN:${isbnValue}&format=json&jscmd=data`
-                    );
-
-
-                    let data = await res.json();
-
-
-                    let key =
-                        `ISBN:${isbnValue}`;
-
-
-                    if (data[key]) {
-
-                        let book = data[key];
-
-
-                        result = {
-
-                            title: book.title,
-
-                            authors:
-                                book.authors
-                                    ?.map(a => a.name),
-
-                            pageCount:
-                                book.number_of_pages,
-
-                            imageLinks: null
-
-                        };
-
-                    }
-
-                }
-
 
 
                 if (!result) {
-
-                    alert(
-                        "Livro não encontrado. Preencha manualmente."
-                    );
-
+                    alert("Livro não encontrado. Preencha manualmente.");
                     return;
-
                 }
 
 
+                title.value = result.title || "";
 
-                title.value =
-                    result.title || "";
+                author.value = result.authors
+                    ? result.authors.join(", ")
+                    : "";
 
+                pages.value = result.pageCount || "";
 
-                author.value =
-                    result.authors
-                        ? result.authors.join(", ")
-                        : "";
-
-
-                pages.value =
-                    result.pageCount || "";
-
-
-
-                // tenta capa Google
 
                 if (result.imageLinks) {
-
 
                     cover.value =
                         result.imageLinks.thumbnail
                             .replace("http:", "https:");
 
-
                 }
-
-                // tenta capa Open Library
-
-                else if (isbnValue) {
-
-
-                    let url =
-                        `https://covers.openlibrary.org/b/isbn/${isbnValue}-L.jpg`;
-
-
-                    const img = new Image();
-
-
-                    img.onload = () => {
-
-                        cover.value = url;
-
-                    };
-
-
-                    img.src = url;
-
-                }
-
 
 
             } catch (e) {
 
-                console.log(e);
-
                 alert("Erro na busca");
-
 
             } finally {
 
-                button.innerText = "🔎 Buscar livro";
+                button.innerText = "🔎 Buscar Livro";
 
             }
 

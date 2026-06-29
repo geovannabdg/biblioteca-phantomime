@@ -872,15 +872,24 @@
 
             let filtered = books.filter(b => {
 
+                if (!b) return false;
+
                 if (
                     currentTab !== "Todos" &&
                     !(b.tags || []).includes(currentTab)
                 ) {
                     return false;
                 }
+
                 let q = search.value.toLowerCase();
 
-                if (q && !b.title.toLowerCase().includes(q) && !(b.author || "").toLowerCase().includes(q)) return false;
+                if (
+                    q &&
+                    !b.title.toLowerCase().includes(q) &&
+                    !(b.author || "").toLowerCase().includes(q)
+                ) {
+                    return false;
+                }
 
                 return true;
 
@@ -1222,7 +1231,7 @@ ISBN: ${b.isbn || ""}
 
                 }
 
-                if (!result && (bookTitle || bookAuthor)) {
+                if ((!result || !result.title) && (bookTitle || bookAuthor)) {
 
                     let query = "";
 

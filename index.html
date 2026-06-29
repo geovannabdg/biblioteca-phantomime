@@ -271,14 +271,20 @@
 
         @media (max-width: 700px) {
 
-            .book-search {
-                grid-template-columns: 1fr;
+            .book-search button {
+                justify-self: center;
+                width: auto;
+                min-width: 160px;
             }
 
-            .book-search input,
-            .book-search button {
+            .book-search input {
                 width: 100%;
                 box-sizing: border-box;
+            }
+
+            .book-search button {
+                width: 80%;
+                justify-self: center;
             }
 
         }

@@ -1222,6 +1222,35 @@ ISBN: ${b.isbn || ""}
 
                 }
 
+                if (!result && (bookTitle || bookAuthor)) {
+
+                    let query = "";
+
+                    if (bookTitle && bookAuthor) {
+                        query = `intitle:${bookTitle}+inauthor:${bookAuthor}`;
+                    } else if (bookTitle) {
+                        query = `intitle:${bookTitle}`;
+                    } else {
+                        query = `inauthor:${bookAuthor}`;
+                    }
+
+
+                    let res = await fetch(
+                        `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}`
+                    );
+
+
+                    let data = await res.json();
+
+
+                    if (data.items) {
+
+                        result = data.items[0].volumeInfo;
+
+                    }
+
+                }
+
                 if (!result) {
                     alert("Livro não encontrado. Preencha manualmente.");
                     return;

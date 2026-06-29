@@ -69,6 +69,7 @@
 
         .themes button {
             margin: 5px;
+            width: 120px;
         }
 
         input,
@@ -257,25 +258,22 @@
         }
 
         .book-search {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr auto;
+            display: flex;
             gap: 10px;
+            width: 100%;
             grid-column: 1 / -1;
             align-items: center;
         }
 
+        .book-search input {
+            flex: 1;
+            min-width: 0;
+        }
+
         .book-search button {
-            width: 160px;
-            height: 42px;
+            width: 170px;
+            white-space: nowrap;
         }
-
-        .review {
-            grid-column: 1 / -1;
-            min-height: 120px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
 
         form>button[type="submit"] {
             width: 100%;
@@ -285,16 +283,11 @@
         @media (max-width:700px) {
 
             .book-search {
-                grid-template-columns: 1fr;
+                flex-direction: column;
             }
 
             .book-search button {
-                width: 160px;
-                justify-self: center;
-            }
-
-            .review {
-                min-height: 120px;
+                width: 100%;
             }
 
         }

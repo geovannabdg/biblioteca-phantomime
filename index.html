@@ -255,6 +255,33 @@
         label {
             color: var(--text);
         }
+
+        .book-search {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            grid-column: 1 / -1;
+        }
+
+
+        .book-search button {
+            grid-column: 1 / -1;
+        }
+
+
+        @media (max-width: 700px) {
+
+            .book-search {
+                grid-template-columns: 1fr;
+            }
+
+            .book-search input,
+            .book-search button {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+        }
     </style>
 </head>
 
@@ -304,14 +331,22 @@
             <div class="tabs" id="tabs"></div>
 
             <form id="bookForm">
-                <div style="display:flex; gap:10px; grid-column:1/-1;">
+
+
+                <div class="book-search">
+
                     <input type="text" id="isbn" placeholder="ISBN">
 
                     <input type="text" id="searchTitle" placeholder="Título para buscar">
 
                     <input type="text" id="searchAuthor" placeholder="Autor (opcional)">
 
-                    <button type="button" onclick="searchISBN()">🔎 Buscar Livro</button>
+                    <button type="button" onclick="searchISBN()">
+                        🔎 Buscar Livro
+                    </button>
+
+
+
                 </div>
                 <input type="text" id="title" placeholder="Título" required>
                 <input type="text" id="author" placeholder="Autor">

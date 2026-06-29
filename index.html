@@ -1231,30 +1231,46 @@ ISBN: ${b.isbn || ""}
 
                 }
 
-                if ((!result || !result.title) && (bookTitle || bookAuthor)) {
+                if (!result && (bookTitle || bookAuthor)) {
 
                     let query = "";
 
                     if (bookTitle && bookAuthor) {
-                        query = `intitle:${bookTitle}+inauthor:${bookAuthor}`;
-                    } else if (bookTitle) {
-                        query = `intitle:${bookTitle}`;
+                        query = `${bookTitle} ${bookAuthor}`;
                     } else {
-                        query = `inauthor:${bookAuthor}`;
+                        query = bookTitle || bookAuthor;
                     }
 
 
                     let res = await fetch(
-                        `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}`
+                        `https://openlibrary.org/search.json?q=${encodeURIComponent(query)}`
                     );
 
 
                     let data = await res.json();
 
 
-                    if (data.items) {
+                    if (data.docs && data.docs.length > 0) {
 
-                        result = data.items[0].volumeInfo;
+                        let book = data.docs[0];
+
+
+                        result = {
+
+                            title: book.title || "",
+
+                            authors: book.author_name || [],
+
+                            pageCount: book.number_of_pages_median || "",
+
+                            imageLinks: book.cover_i
+                                ? {
+                                    thumbnail:
+                                        `https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg`
+                                }
+                                : null
+
+                        };
 
                     }
 

@@ -1211,24 +1211,6 @@ ISBN: ${b.isbn || ""}
 
                 }
 
-
-                if (!result && bookTitle) {
-
-                    let query = bookTitle + " " + bookAuthor;
-
-                    let res = await fetch(
-                        `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}`
-                    );
-
-                    let data = await res.json();
-
-                    if (data.items) {
-                        result = data.items[0].volumeInfo;
-                    }
-
-                }
-
-
                 if (!result) {
                     alert("Livro não encontrado. Preencha manualmente.");
                     return;

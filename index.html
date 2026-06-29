@@ -1162,6 +1162,7 @@ ISBN: ${b.isbn || ""}
         async function searchISBN(button) {
 
             const isbnValue = isbn.value.replace(/[-\s]/g, "");
+            console.log("ISBN pesquisado:", isbnValue);
 
             const bookTitle = searchTitle.value.trim();
 
@@ -1169,6 +1170,8 @@ ISBN: ${b.isbn || ""}
 
 
             button.innerText = "🔎 Buscando...";
+
+            await new Promise(resolve => setTimeout(resolve, 1000));
 
 
             try {
@@ -1179,13 +1182,31 @@ ISBN: ${b.isbn || ""}
                 if (isbnValue) {
 
                     let res = await fetch(
-                        `https://www.googleapis.com/books/v1/volumes?q=isbn:${isbnValue}`
+                        `https://openlibrary.org/api/books?bibkeys=ISBN:${isbnValue}&format=json&jscmd=data`
                     );
 
                     let data = await res.json();
 
-                    if (data.items) {
-                        result = data.items[0].volumeInfo;
+                    let key = `ISBN:${isbnValue}`;
+
+
+                    if (data[key]) {
+
+                        result = {
+                            title: data[key].title,
+
+                            authors: data[key].authors
+                                ? data[key].authors.map(a => a.name)
+                                : [],
+
+                            pageCount: data[key].number_of_pages,
+
+                            imageLinks: {
+                                thumbnail:
+                                    `https://covers.openlibrary.org/b/isbn/${isbnValue}-L.jpg`
+                            }
+                        };
+
                     }
 
                 }

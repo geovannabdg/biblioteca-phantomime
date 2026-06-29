@@ -266,6 +266,8 @@
 
         .book-search button {
             grid-column: 1 / -1;
+            width: 220px;
+            justify-self: center;
         }
 
 
@@ -282,16 +284,8 @@
                 grid-template-columns: 1fr;
             }
 
-
-            .book-search input {
-                width: 100%;
-                box-sizing: border-box;
-            }
-
-
             .book-search button {
-                width: 160px;
-                justify-self: center;
+                width: 100%;
             }
 
         }
@@ -359,32 +353,32 @@
                     </button>
 
                 </div>
-        <input type="text" id="title" placeholder="Título" required>
-        <input type="text" id="author" placeholder="Autor">
-        <input type="number" id="price" placeholder="Preço (R$)" step="0.01">
-        <input type="number" id="rating" placeholder="Nota 0-5" min="0" max="5">
-        <input type="number" id="pages" placeholder="Páginas" min="1">
-        <input type="text" id="cover" placeholder="URL da capa">
+                <input type="text" id="title" placeholder="Título" required>
+                <input type="text" id="author" placeholder="Autor">
+                <input type="number" id="price" placeholder="Preço (R$)" step="0.01">
+                <input type="number" id="rating" placeholder="Nota 0-5" min="0" max="5">
+                <input type="number" id="pages" placeholder="Páginas" min="1">
+                <input type="text" id="cover" placeholder="URL da capa">
 
-        <button type="button" id="coverBtn">📷 Escolher capa</button>
-        <input type="file" id="coverFile" accept="image/*" hidden>
+                <button type="button" id="coverBtn">📷 Escolher capa</button>
+                <input type="file" id="coverFile" accept="image/*" hidden>
 
-        <div class="tags">
-            <label><input type="checkbox" value="Tenho"> Tenho</label>
-            <label><input type="checkbox" value="Já li"> Já li</label>
-            <label><input type="checkbox" value="Quero comprar"> Quero comprar</label>
-            <label><input type="checkbox" value="Emprestei"> Emprestei</label>
-            <label><input type="checkbox" value="Peguei emprestado"> Peguei emprestado</label>
+                <div class="tags">
+                    <label><input type="checkbox" value="Tenho"> Tenho</label>
+                    <label><input type="checkbox" value="Já li"> Já li</label>
+                    <label><input type="checkbox" value="Quero comprar"> Quero comprar</label>
+                    <label><input type="checkbox" value="Emprestei"> Emprestei</label>
+                    <label><input type="checkbox" value="Peguei emprestado"> Peguei emprestado</label>
+                </div>
+
+                <textarea id="review" class="review" placeholder="Sua resenha sobre o livro..."></textarea>
+
+                <button type="submit">Adicionar</button>
+            </form>
+
+            <div class="grid" id="bookList"></div>
+
         </div>
-
-        <textarea id="review" class="review" placeholder="Sua resenha sobre o livro..."></textarea>
-
-        <button type="submit">Adicionar</button>
-        </form>
-
-        <div class="grid" id="bookList"></div>
-
-    </div>
     </div>
 
     <script>

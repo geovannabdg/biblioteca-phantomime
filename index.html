@@ -868,8 +868,12 @@
 
             let filtered = books.filter(b => {
 
-                if (currentTab !== "Todos" && !b.tags?.includes(currentTab)) return false;
-
+                if (
+                    currentTab !== "Todos" &&
+                    !(b.tags || []).includes(currentTab)
+                ) {
+                    return false;
+                }
                 let q = search.value.toLowerCase();
 
                 if (q && !b.title.toLowerCase().includes(q) && !(b.author || "").toLowerCase().includes(q)) return false;
@@ -931,8 +935,9 @@ ISBN: ${b.isbn || ""}
 
             editIndex = i;
 
-            form.querySelector("button[type='submit']").innerText = "Salvar edição";
-
+            form.querySelectorAll("input[type='checkbox']").forEach(c => {
+                c.checked = (b.tags || []).includes(c.value);
+            });
             window.scrollTo({
                 top: 0,
                 behavior: "smooth"

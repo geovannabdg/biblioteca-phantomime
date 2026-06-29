@@ -1261,7 +1261,9 @@ ISBN: ${b.isbn || ""}
 
                             authors: book.author_name || [],
 
-                            pageCount: book.number_of_pages_median || "",
+                            pageCount: book.number_of_pages_median
+                                || book.number_of_pages
+                                || "",
 
                             imageLinks: book.cover_i
                                 ? {

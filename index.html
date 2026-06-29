@@ -274,6 +274,11 @@
                 grid-template-columns: 1fr;
             }
 
+            .book-search button {
+                width: 160px;
+                justify-self: center;
+            }
+
         }
     </style>
 </head>
@@ -334,7 +339,7 @@
 
                     <input type="text" id="searchAuthor" placeholder="Autor (opcional)">
 
-                    <button type="button" onclick="searchISBN(event)">
+                    <button type="button" onclick="searchISBN(this)">
                         🔎 Buscar Livro
                     </button>
 
@@ -1158,7 +1163,7 @@ ISBN: ${b.isbn || ""}
 
 
 
-            async function searchISBN(event) { }
+            async function searchISBN(button) { }
 
 
 

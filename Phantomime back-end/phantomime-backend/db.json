@@ -1,0 +1,1449 @@
+{
+    "Geo": {
+        "senha": "1295",
+        "books": [
+            {
+                "title": "O Mundo em caos",
+                "author": "Patrick Ness",
+                "tags": [
+                    "Tenho",
+                    "Já li"
+                ],
+                "price": "80.00",
+                "rating": "5",
+                "pages": "480",
+                "cover": "https://i.pinimg.com/1200x/d3/80/e2/d380e203ca84cd0d6b326bab5d8096c8.jpg",
+                "review": ""
+            },
+            {
+                "title": "A Pergunta e a resposta",
+                "author": "Patrick Ness",
+                "tags": [
+                    "Tenho",
+                    "Já li"
+                ],
+                "price": "42.10",
+                "rating": "5",
+                "pages": "546",
+                "cover": "https://i.pinimg.com/736x/cb/39/6f/cb396f437f8757fc77bfc7d4f5bb547b.jpg",
+                "review": ""
+            },
+            {
+                "isbn": "",
+                "title": "Homens e Monstros ",
+                "author": "Patrick Ness",
+                "tags": [
+                    "Tenho",
+                    "Já li"
+                ],
+                "price": "100.00",
+                "rating": "5",
+                "pages": "560",
+                "cover": "https://m.media-amazon.com/images/I/81d4lUGEZyL._UF1000,1000_QL80_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Percy Jackson- O Ladrão de Raios",
+                "author": "Rick Riordan",
+                "tags": [
+                    "Tenho",
+                    "Já li"
+                ],
+                "price": "32.51",
+                "rating": "5",
+                "pages": "400",
+                "cover": "https://i.pinimg.com/736x/a1/b2/5b/a1b25bab2a232fc94d32319a051f8428.jpg",
+                "review": ""
+            },
+            {
+                "title": "Percy Jackson- O Mar de Monstros",
+                "author": "Rick Riordan",
+                "tags": [
+                    "Tenho",
+                    "Já li"
+                ],
+                "price": "32.45",
+                "rating": "5",
+                "pages": "304",
+                "cover": "https://i.pinimg.com/736x/c4/55/06/c455068d342a5c84cf066f133600d831.jpg",
+                "review": ""
+            },
+            {
+                "title": "Percy Jackson- A Maldição do Titã",
+                "author": "Rick Riordan",
+                "tags": [
+                    "Tenho",
+                    "Já li"
+                ],
+                "price": "37.29",
+                "rating": "5",
+                "pages": "336",
+                "cover": "https://i.pinimg.com/1200x/48/47/02/484702acd2e54abe4c7118a946855557.jpg",
+                "review": ""
+            },
+            {
+                "title": "Percy Jackson- A Batalha do Labirinto",
+                "author": "Rick Riordan",
+                "tags": [
+                    "Tenho",
+                    "Já li"
+                ],
+                "price": "31.00",
+                "rating": "5",
+                "pages": "392",
+                "cover": "https://i.pinimg.com/736x/d2/4d/3d/d24d3dde0e3817883eb259db54e84bc8.jpg",
+                "review": ""
+            },
+            {
+                "title": "Percy Jackson- O Último Olimpiano ",
+                "author": "Rick Riordan",
+                "tags": [
+                    "Tenho",
+                    "Já li"
+                ],
+                "price": "31.45",
+                "rating": "5",
+                "pages": "384",
+                "cover": "https://i.pinimg.com/736x/63/2d/e3/632de39eb87ff7b16e7685d39e92903e.jpg",
+                "review": ""
+            },
+            {
+                "title": "Desventuras em Série- O Mau Começo",
+                "author": "Lemony Snicket",
+                "tags": [
+                    "Tenho",
+                    "Já li"
+                ],
+                "price": "24.90",
+                "rating": "3",
+                "pages": "182",
+                "cover": "https://m.media-amazon.com/images/I/91Q5llF8hoL._SY425_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Desventuras em Série- A Sala dos Répteis",
+                "author": "Lemony Snicket",
+                "tags": [
+                    "Tenho",
+                    "Já li"
+                ],
+                "price": "59.90",
+                "rating": "5",
+                "pages": "177",
+                "cover": "https://m.media-amazon.com/images/I/81+z537Q+NL._SY425_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Desventuras em Série- O Lago das Sanguessugas",
+                "author": "Lemony Snicket",
+                "tags": [
+                    "Tenho",
+                    "Já li"
+                ],
+                "price": "59.90",
+                "rating": "4",
+                "pages": "192",
+                "cover": "https://m.media-amazon.com/images/I/91vUaQlxfqL._SY425_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Desventuras em Série- Serraria Baixo-Astral",
+                "author": "Lemony Snicket",
+                "tags": [
+                    "Tenho",
+                    "Já li"
+                ],
+                "price": "65.00",
+                "rating": "5",
+                "pages": "176",
+                "cover": "https://m.media-amazon.com/images/I/91aWm3+0-zL._SY425_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Desventuras em Série- Inferno no Colégio Interno",
+                "author": "Lemony Snicket",
+                "tags": [
+                    "Tenho",
+                    "Já li"
+                ],
+                "price": "65.00",
+                "rating": "5",
+                "pages": "200",
+                "cover": "https://m.media-amazon.com/images/I/914wWorrKMS._SY425_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Harry Potter a Criança Amaldiçoada",
+                "author": "J.K Rowling",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "62.90",
+                "rating": "2",
+                "pages": "352",
+                "cover": "https://m.media-amazon.com/images/I/A1KCc5VBFYL._SY385_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Animais Fantásticos os Crimes de Grindelwald ",
+                "author": "J.K Rowling",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "84.91",
+                "rating": "",
+                "pages": "304",
+                "cover": "https://m.media-amazon.com/images/I/91USAo2UKzL._SY425_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Os Segredos de Dumbledore",
+                "author": "J.K Rowling",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "53.94",
+                "rating": "",
+                "pages": "288",
+                "cover": "https://m.media-amazon.com/images/I/61Uyil3qEKL._SY342_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Harry Potter e a Pedra Filosofal",
+                "author": "J.K Rowling",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "40.00",
+                "rating": "4",
+                "pages": "264",
+                "cover": "https://m.media-amazon.com/images/I/81ibfYk4qmL._AC_UL320_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Harry Potter e a Câmara Secreta",
+                "author": "J.K Rowling",
+                "tags": [
+                    "Tenho",
+                    "Já li"
+                ],
+                "price": "40.00",
+                "rating": "3",
+                "pages": "287",
+                "cover": "https://m.media-amazon.com/images/I/81jbivNEVML._AC_UL320_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Harry Potter e o Prisioneiro de Azkaban",
+                "author": "J.K Rowling",
+                "tags": [
+                    "Tenho",
+                    "Já li"
+                ],
+                "price": "40.00",
+                "rating": "5",
+                "pages": "340",
+                "cover": "https://m.media-amazon.com/images/I/81u+ljPVifL._AC_UL320_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Harry Potter e o Cálice de Fogo",
+                "author": "J.K Rowling",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "40.00",
+                "rating": "",
+                "pages": "480",
+                "cover": "https://m.media-amazon.com/images/I/81nTLN-kz7L._AC_UL320_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Harry Potter e a Ordem da Fênix",
+                "author": "J.K Rowling",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "76.21",
+                "rating": "",
+                "pages": "700",
+                "cover": "https://m.media-amazon.com/images/I/81d6ESyPZwL._AC_UL320_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Harry Potter e o Enigma do príncipe",
+                "author": "J.K Rowling",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "59.24",
+                "rating": "",
+                "pages": "450",
+                "cover": "https://m.media-amazon.com/images/I/81yFIh1yoZL._AC_UL320_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Arquivos da Magia- A Bruxaria dos Filmes",
+                "author": "J.K Rowling",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "149",
+                "rating": "",
+                "pages": "160",
+                "cover": "https://m.media-amazon.com/images/I/81Sr1lPXJTL._SY385_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Luzes, Câmeras, Magia!",
+                "author": "J.K Rowling",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "40.96",
+                "rating": "",
+                "pages": "160",
+                "cover": "https://m.media-amazon.com/images/I/817QZ4VilGL._SY385_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Os Pensadores",
+                "author": "Aristóteles ",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "146",
+                "rating": "",
+                "pages": "800",
+                "cover": "https://m.media-amazon.com/images/I/913ionbgKfL._SY385_.jpg",
+                "review": ""
+            },
+            {
+                "title": "O Grimório das Bruxas",
+                "author": "Ronald Hutton",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "80.00",
+                "rating": "",
+                "pages": "544",
+                "cover": "https://m.media-amazon.com/images/I/A1lURdgyUTL._SY425_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Lady Killers",
+                "author": "Tori Telfer",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "56.15",
+                "rating": "",
+                "pages": "384",
+                "cover": "https://m.media-amazon.com/images/I/71dQ4DPcGdL._SY342_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Morte Lenta",
+                "author": "Matthew Fitzsimmons",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "79.80",
+                "rating": "",
+                "pages": "319",
+                "cover": "https://m.media-amazon.com/images/I/91D48q4PvsL._SY385_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Star Wars Troopers da Morte",
+                "author": "Joe Schreiber",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "20.00",
+                "rating": "",
+                "pages": "328",
+                "cover": "https://m.media-amazon.com/images/I/81fllwXGZ0L._AC_UL320_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Vermelho, Branco e Sangue Azul",
+                "author": "Cassy McQuiston",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "39.20",
+                "rating": "",
+                "pages": "394",
+                "cover": "https://m.media-amazon.com/images/I/71SYepTUsDL._SY342_.jpg",
+                "review": ""
+            },
+            {
+                "title": "O Caso da Mansão DeBoën",
+                "author": "Edgar Cantero",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "23.99",
+                "rating": "",
+                "pages": "354",
+                "cover": "https://m.media-amazon.com/images/I/71cHrif4eaL._SY385_.jpg",
+                "review": ""
+            },
+            {
+                "title": "O idiota",
+                "author": "Fyodor Dostoévsky",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "95.76",
+                "rating": "",
+                "pages": "712",
+                "cover": "https://i.pinimg.com/736x/eb/99/25/eb992505ce68e61dc55961bfd487af9d.jpg",
+                "review": ""
+            },
+            {
+                "title": "Pecados Mortais",
+                "author": "Mria Gr",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "29.42",
+                "rating": "",
+                "pages": "336",
+                "cover": "https://m.media-amazon.com/images/I/91QO4NgPMfL._SY425_.jpg",
+                "review": ""
+            },
+            {
+                "title": "A Cidade e as Serras",
+                "author": "Eça de Queiroz",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "31.00",
+                "rating": "",
+                "pages": "224",
+                "cover": "https://m.media-amazon.com/images/I/51mIaX+Cf3L._AC_UL320_.jpg",
+                "review": ""
+            },
+            {
+                "title": "O Diário de Myriam ",
+                "author": "Philippe Lobjois",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "40.33",
+                "rating": "",
+                "pages": "320",
+                "cover": "https://m.media-amazon.com/images/I/91qdvIBoIrL._SY425_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Os Condenados",
+                "author": "Andrew Pyper",
+                "tags": [
+                    "Tenho",
+                    "Já li"
+                ],
+                "price": "60.92",
+                "rating": "5",
+                "pages": "336",
+                "cover": "https://m.media-amazon.com/images/I/51bSbjmcezL._SY445_SX342_ML2_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Contos ",
+                "author": "Voltaire",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "59.60",
+                "rating": "",
+                "pages": "762",
+                "cover": "",
+                "review": ""
+            },
+            {
+                "title": "Alchemised",
+                "author": "SenLínYu",
+                "tags": [
+                    "Tenho",
+                    "Já li"
+                ],
+                "price": "104.30",
+                "rating": "",
+                "pages": "960",
+                "cover": "https://m.media-amazon.com/images/I/51fAt66u4AL._SY445_SX342_ML2_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Cleopatra e Frankenstein",
+                "author": "Coco Mellors",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "40.79",
+                "rating": "",
+                "pages": "448",
+                "cover": "https://m.media-amazon.com/images/I/71+RNC0DODL._SY425_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Heróis do Olimpo- O Herói Perdido",
+                "author": "Rick Riordan",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "41.24",
+                "rating": "3",
+                "pages": "440",
+                "cover": "https://m.media-amazon.com/images/I/613qEqF6DNL._SY385_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Heróis do Olimpo- O Filho de Netuno",
+                "author": "Rick Riordan",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "36.17",
+                "rating": "",
+                "pages": "432",
+                "cover": "https://m.media-amazon.com/images/I/61HVJUOwUpL._SY385_.jpg",
+                "review": ""
+            },
+            {
+                "title": "A Casa no Fim de Tudo ",
+                "author": "William Hope Hodgson",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "34.90",
+                "rating": "",
+                "pages": "160",
+                "cover": "https://m.media-amazon.com/images/I/41-y8Ybg61L._SY445_SX342_ML2_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Heróis da Mitologia Grega",
+                "author": "Charles Kingsley",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "32.39",
+                "rating": "",
+                "pages": "192",
+                "cover": "https://m.media-amazon.com/images/I/613278ELpcL._SY385_.jpg",
+                "review": ""
+            },
+            {
+                "title": "O Morro dos Ventos Uivantes",
+                "author": "Emily Bronte",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "24.00",
+                "rating": "",
+                "pages": "464",
+                "cover": "https://m.media-amazon.com/images/I/91-hcpB1WMS._AC_UL320_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Petrus Logus; Guardião do Tempo",
+                "author": "Augusto Cury",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "90.00",
+                "rating": "",
+                "pages": "296",
+                "cover": "https://m.media-amazon.com/images/I/81u8qVhF9uL._SY425_.jpg",
+                "review": ""
+            },
+            {
+                "title": "uma bruxa apaixonada",
+                "author": "",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "25.00",
+                "rating": "",
+                "pages": "300",
+                "cover": "",
+                "review": ""
+            },
+            {
+                "title": "Neve e Cinzas",
+                "author": "Sara Raasch",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "71.90",
+                "rating": "",
+                "pages": "401",
+                "cover": "https://m.media-amazon.com/images/I/91ps1pJKazL._SY425_.jpg",
+                "review": ""
+            },
+            {
+                "title": "No Coração do Mar",
+                "author": "Charlotte Rogan",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "30",
+                "rating": "",
+                "pages": "240",
+                "cover": "https://m.media-amazon.com/images/I/61uI1pF-omL._SY385_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Raízes do Mal",
+                "author": "Gwenda Bond",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "35",
+                "rating": "",
+                "pages": "245",
+                "cover": "https://m.media-amazon.com/images/I/71s7te7XMoL._AC_UL320_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Cortem as Cabeças",
+                "author": "Mainak Dhar",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "16.20",
+                "rating": "",
+                "pages": "192",
+                "cover": "https://m.media-amazon.com/images/I/91AQW0cGGTL._AC_UL320_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Alice Através do Espelho",
+                "author": "Lewis Carroll",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "26.85",
+                "rating": "",
+                "pages": "160",
+                "cover": "https://m.media-amazon.com/images/I/91AQW0cGGTL._AC_UL320_.jpg",
+                "review": ""
+            },
+            {
+                "title": "O Retrato de Dorian Gray",
+                "author": "Oscar Wild",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "20.00",
+                "rating": "",
+                "pages": "264",
+                "cover": "https://m.media-amazon.com/images/I/51REmr5NmnL._AC_UL320_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Deuses Romanos",
+                "author": "Herma Wilson",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "20",
+                "rating": "",
+                "pages": "100",
+                "cover": "",
+                "review": ""
+            },
+            {
+                "title": "A Última Princesa Andina",
+                "author": "Fabiane Ribeiro",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "20",
+                "rating": "",
+                "pages": "180",
+                "cover": "",
+                "review": ""
+            },
+            {
+                "title": "Tríptico Vital ",
+                "author": "Mariana Basilío",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "20",
+                "rating": "",
+                "pages": "164",
+                "cover": "https://m.media-amazon.com/images/I/81eX6vERAEL._AC_UL320_.jpg",
+                "review": ""
+            },
+            {
+                "title": "A Batalha do Labirinto",
+                "author": "Rick Riordan",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "50",
+                "rating": "5",
+                "pages": "392",
+                "cover": "https://i.pinimg.com/736x/c7/2d/74/c72d7463a45625bbde4d7c076d7e69e9.jpg",
+                "review": ""
+            },
+            {
+                "title": "O Livro de são Cipriano",
+                "author": "",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "",
+                "rating": "",
+                "pages": "",
+                "cover": "",
+                "review": ""
+            },
+            {
+                "title": "Memórias sonhos e reflexões",
+                "author": "C.G Jung",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "",
+                "rating": "",
+                "pages": "",
+                "cover": "",
+                "review": ""
+            },
+            {
+                "title": "o Filho de Netuno ",
+                "author": "Rick Riordan",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "",
+                "rating": "",
+                "pages": "",
+                "cover": "",
+                "review": ""
+            },
+            {
+                "title": "A Culpa é das Estrelas",
+                "author": "John Green",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "35",
+                "rating": "",
+                "pages": "288",
+                "cover": "https://m.media-amazon.com/images/I/41yToN1cOML._SY445_SX342_ML2_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Minha Querida Assombração",
+                "author": "",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "",
+                "rating": "",
+                "pages": "",
+                "cover": "",
+                "review": ""
+            },
+            {
+                "title": "Morte por luxúria",
+                "author": "Peter Tremayne",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "",
+                "rating": "",
+                "pages": "",
+                "cover": "",
+                "review": ""
+            },
+            {
+                "title": "Naufrágio Entre Amigos",
+                "author": "Eduardo Sabino",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "",
+                "rating": "",
+                "pages": "",
+                "cover": "",
+                "review": ""
+            },
+            {
+                "title": "Um Conto Sombrio dos Grimm",
+                "author": "Adam Gidwitz",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "",
+                "rating": "",
+                "pages": "",
+                "cover": "",
+                "review": ""
+            },
+            {
+                "title": "Supernatural- O Diário de John Winchester",
+                "author": "Alex",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "",
+                "rating": "",
+                "pages": "",
+                "cover": "",
+                "review": ""
+            },
+            {
+                "title": "Baralho Cigano ",
+                "author": "André Mantovanni",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "",
+                "rating": "",
+                "pages": "",
+                "cover": "",
+                "review": ""
+            },
+            {
+                "title": "Percy Jackson e os Arquivos do Semideus",
+                "author": "Rick Riordan",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "",
+                "rating": "",
+                "pages": "",
+                "cover": "",
+                "review": ""
+            },
+            {
+                "title": "O Colapso do Universo",
+                "author": "isaac",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "",
+                "rating": "",
+                "pages": "",
+                "cover": "",
+                "review": ""
+            },
+            {
+                "title": "Tristão e Isolda",
+                "author": "Helena Gomes",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "",
+                "rating": "",
+                "pages": "",
+                "cover": "",
+                "review": ""
+            },
+            {
+                "title": "The Promised Neverland 20",
+                "author": "",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "",
+                "rating": "",
+                "pages": "",
+                "cover": "",
+                "review": ""
+            },
+            {
+                "title": "Lore Olympus Volume 1 ",
+                "author": "Rachel Smythe",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "89.00",
+                "rating": "",
+                "pages": "384",
+                "cover": "https://images-na.ssl-images-amazon.com/images/I/71hrYylde8L._AC_UL232_SR232,232_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Lore Olympus Volume 2",
+                "author": "Rachel Smythe",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "90.00",
+                "rating": "",
+                "pages": "356",
+                "cover": "https://images-na.ssl-images-amazon.com/images/I/810-F9kRtJL._AC_UL232_SR232,232_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Lore Olympus Volume 3",
+                "author": "Rachel Smythe",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "89.00",
+                "rating": "",
+                "pages": "345",
+                "cover": "https://images-na.ssl-images-amazon.com/images/I/81HMraDm+uL._AC_UL232_SR232,232_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Menotti Del Picchia",
+                "author": "Juca Mulato",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "",
+                "rating": "",
+                "pages": "",
+                "cover": "",
+                "review": ""
+            },
+            {
+                "title": "O Estudo em Vermelho",
+                "author": "Conan Doyle",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "",
+                "rating": "",
+                "pages": "",
+                "cover": "",
+                "review": ""
+            },
+            {
+                "title": "Pinóquio",
+                "author": "",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "",
+                "rating": "",
+                "pages": "",
+                "cover": "",
+                "review": ""
+            },
+            {
+                "title": "O Anticristo",
+                "author": "Nietzsche",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "15",
+                "rating": "",
+                "pages": "",
+                "cover": "https://m.media-amazon.com/images/I/71Xb-YhojdL._AC_UL320_.jpg",
+                "review": ""
+            },
+            {
+                "title": "calotas polares",
+                "author": "",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "",
+                "rating": "",
+                "pages": "",
+                "cover": "",
+                "review": ""
+            },
+            {
+                "title": "Orações Convento",
+                "author": "",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "",
+                "rating": "",
+                "pages": "",
+                "cover": "",
+                "review": ""
+            },
+            {
+                "title": "O Caso Dreyfus",
+                "author": "Rui Barbosa",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "",
+                "rating": "",
+                "pages": "96",
+                "cover": "",
+                "review": ""
+            },
+            {
+                "title": "este livro é gay",
+                "author": "james dawson",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "",
+                "rating": "",
+                "pages": "",
+                "cover": "",
+                "review": ""
+            },
+            {
+                "title": "Krishmurti",
+                "author": "",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "",
+                "rating": "",
+                "pages": "",
+                "cover": "",
+                "review": ""
+            },
+            {
+                "title": "Lore",
+                "author": "Alexandra Bracken",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "80.00",
+                "rating": "",
+                "pages": "628",
+                "cover": "https://m.media-amazon.com/images/I/81+huFiuZEL._SY385_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Halo",
+                "author": "Alexandra Adornetto",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "23.00",
+                "rating": "",
+                "pages": "400",
+                "cover": "https://m.media-amazon.com/images/I/71tpNclGsoL._SY425_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Caraval",
+                "author": "Stephanie Graber",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "47.29",
+                "rating": "",
+                "pages": "352",
+                "cover": "https://m.media-amazon.com/images/I/81H707gd4GL._SY385_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Ninguém Vai Te Ouvir Gritar",
+                "author": "Mark Miller",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "41.24",
+                "rating": "",
+                "pages": "294",
+                "cover": "https://m.media-amazon.com/images/I/81Jz5PrvZFL._SY425_.jpg",
+                "review": ""
+            },
+            {
+                "title": "A Hora da Estrela ",
+                "author": "Clarice Lispector",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "49.00",
+                "rating": "",
+                "pages": "88",
+                "cover": "https://m.media-amazon.com/images/I/61TaHURu27L._SY342_.jpg",
+                "review": ""
+            },
+            {
+                "title": "A Academia de Casos Arquivados",
+                "author": "Jennifer Lynn Barnes",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "49.08",
+                "rating": "",
+                "pages": "264",
+                "cover": "https://m.media-amazon.com/images/I/51E+QvFSXWL._SY445_SX342_ML2_.jpg",
+                "review": ""
+            },
+            {
+                "title": "O Diário Perdido ",
+                "author": "Alex Hirsch",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "49.19",
+                "rating": "",
+                "pages": "288",
+                "cover": "https://m.media-amazon.com/images/I/91OvTwFvWKL._SY385_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Guia de Aventuras",
+                "author": "Alex Hirsch",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "86.98",
+                "rating": "",
+                "pages": "160",
+                "cover": "https://m.media-amazon.com/images/I/917eLKPW9mL._SY425_.jpg",
+                "review": ""
+            },
+            {
+                "title": "A Biblioteca da Meia-Noite",
+                "author": "Matt Haig",
+                "tags": [
+                    "Tenho",
+                    "Já li"
+                ],
+                "price": "29.25",
+                "rating": "1",
+                "pages": "308",
+                "cover": "https://m.media-amazon.com/images/I/81iqH8dpjuL._AC_UL320_.jpg",
+                "review": ""
+            },
+            {
+                "title": "A Metamorfose",
+                "author": "Franz Kafka",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "13",
+                "rating": "",
+                "pages": "96",
+                "cover": "https://m.media-amazon.com/images/I/715JOcuqSSL._SY385_.jpg",
+                "review": ""
+            },
+            {
+                "title": "verity",
+                "author": "Colleen Hoover",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "28.30",
+                "rating": "",
+                "pages": "320",
+                "cover": "https://m.media-amazon.com/images/I/91SDZ2eUj+L._SY425_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Sonho de Uma Noite de Verão",
+                "author": "William Shakespeare",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "14",
+                "rating": "",
+                "pages": "",
+                "cover": "https://m.media-amazon.com/images/I/61De5t8X72L._SL1500_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Romeu e Julieta",
+                "author": "William Shakespeare",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "14",
+                "rating": "",
+                "pages": "",
+                "cover": "https://m.media-amazon.com/images/I/71pqfC9S11L._SL1500_.jpg",
+                "review": ""
+            },
+            {
+                "title": "O Mercador de Veneza ",
+                "author": "William Shakespeare",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "14",
+                "rating": "",
+                "pages": "",
+                "cover": "https://m.media-amazon.com/images/I/61EplAtXdEL._SL1500_.jpg",
+                "review": ""
+            },
+            {
+                "title": "A Megera Domada ",
+                "author": "William Shakespeare",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "14",
+                "rating": "",
+                "pages": "",
+                "cover": "https://m.media-amazon.com/images/I/71kp0JXggjL._SL1500_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Macbeth",
+                "author": "William Shakespeare",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "14",
+                "rating": "",
+                "pages": "",
+                "cover": "https://m.media-amazon.com/images/I/71j0YBBGUxL._SL1500_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Otelo",
+                "author": "William Shakespeare",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "14",
+                "rating": "",
+                "pages": "",
+                "cover": "https://m.media-amazon.com/images/I/71nCfl1cmxL._SL1500_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Hamlet",
+                "author": "William Shakespeare",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "14",
+                "rating": "",
+                "pages": "",
+                "cover": "https://m.media-amazon.com/images/I/71yTTLMgq8L._SY425_.jpg",
+                "review": ""
+            },
+            {
+                "title": "A Morte de Ivan Ilitch",
+                "author": "Liev Tolstói",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "",
+                "rating": "",
+                "pages": "",
+                "cover": "https://m.media-amazon.com/images/I/61CpTX3QbFL._AC_UL320_.jpg",
+                "review": ""
+            },
+            null,
+            {
+                "isbn": "9788535902778",
+                "title": "A ditadura envergonhada",
+                "author": "Elio Gaspari",
+                "tags": [],
+                "price": "",
+                "rating": "",
+                "pages": "417",
+                "cover": "https://covers.openlibrary.org/b/isbn/9788535902778-L.jpg",
+                "review": ""
+            },
+            {
+                "isbn": "9788582972939",
+                "title": "Naufrágio entre amigos",
+                "author": "Eduardo Sabino",
+                "tags": [],
+                "price": "",
+                "rating": "",
+                "pages": "170",
+                "cover": "https://covers.openlibrary.org/b/isbn/9788582972939-L.jpg",
+                "review": ""
+            }
+        ]
+    },
+    "2": {
+        "senha": "1520",
+        "books": [
+            {
+                "title": "O Príncipe Cruel ",
+                "author": "Holly Black",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "70.21",
+                "rating": "",
+                "pages": "384",
+                "cover": "https://m.media-amazon.com/images/I/71TxcwyJpoL._SY425_.jpg",
+                "review": ""
+            },
+            {
+                "title": "É Assim que acaba",
+                "author": "Colleen Hoover",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "52.10",
+                "rating": "",
+                "pages": "392",
+                "cover": "https://m.media-amazon.com/images/I/8196PzdCGiL._SY425_.jpg",
+                "review": ""
+            },
+            {
+                "title": "É Assim que começa ",
+                "author": "Colleen Hoover",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "57.34",
+                "rating": "",
+                "pages": "336",
+                "cover": "https://m.media-amazon.com/images/I/817PD4O9BZL._SY425_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Verity",
+                "author": "Colleen Hoover",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "49.10",
+                "rating": "",
+                "pages": "360",
+                "cover": "https://m.media-amazon.com/images/I/91eQquAAR3L._SY425_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Leitura de verão",
+                "author": "Emily Henry",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "49.90",
+                "rating": "",
+                "pages": "379",
+                "cover": "https://m.media-amazon.com/images/I/81UZnTBAY0L._SY385_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Advogando para o amor ",
+                "author": "Gabriela Bortolotto",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "111.56",
+                "rating": "",
+                "pages": "293",
+                "cover": "https://m.media-amazon.com/images/I/914Oer1bT0L._SY385_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Amor, teoricamente",
+                "author": "Ali Hazelwood",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "57.93",
+                "rating": "",
+                "pages": "368",
+                "cover": "https://m.media-amazon.com/images/I/71TMBhvnypL._SY385_.jpg",
+                "review": ""
+            },
+            {
+                "title": "A hipótese do amor ",
+                "author": "Ali Hazelwood",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "61.79",
+                "rating": "",
+                "pages": "368",
+                "cover": "https://m.media-amazon.com/images/I/71snJkZzgmL._SY385_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Inimizade colorida",
+                "author": "Tatiane Biasi",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "",
+                "rating": "",
+                "pages": "433",
+                "cover": "https://m.media-amazon.com/images/I/81oV8Wyz64L._SY425_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Estilhaça-me",
+                "author": "Tahereh Mafi",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "35.34",
+                "rating": "",
+                "pages": "337",
+                "cover": "https://m.media-amazon.com/images/I/71P-Mok4cqL._SY425_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Liberta-me",
+                "author": "Tahereh Mafi",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "31.53",
+                "rating": "",
+                "pages": "458",
+                "cover": "https://m.media-amazon.com/images/I/81QXzYLzpLL._SY385_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Incendeia-me",
+                "author": "Tahereh Mafi",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "24.47",
+                "rating": "",
+                "pages": "441",
+                "cover": "https://m.media-amazon.com/images/I/81yPJu-ltGL._SY385_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Restaura-me",
+                "author": "Tahereh Mafi",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "35.34",
+                "rating": "",
+                "pages": "321",
+                "cover": "https://m.media-amazon.com/images/I/71FxwdX4v1L._SY425_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Desafia-me",
+                "author": "Tahereh Mafi",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "29.35",
+                "rating": "",
+                "pages": "303",
+                "cover": "https://m.media-amazon.com/images/I/81zU4KTGfPL._SY385_.jpg",
+                "review": ""
+            },
+            {
+                "title": "Imagina-me",
+                "author": "Tahereh Mafi",
+                "tags": [
+                    "Tenho"
+                ],
+                "price": "25.56",
+                "rating": "",
+                "pages": "378",
+                "cover": "https://m.media-amazon.com/images/I/41S9wUJUUTL._SY445_SX342_QL70_ML2_.jpg",
+                "review": ""
+            }
+        ]
+    },
+    "users": [
+        {}
+    ]
+}

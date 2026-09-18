@@ -1197,8 +1197,8 @@ ISBN: ${b.isbn || ""}
             }
 
             // Procura o primeiro resultado que realmente tenha páginas
-            const book =
-                data.docs.find(item => {
+            const livrosValidos =
+                data.docs.filter(item => {
 
                     const titulo =
                         item.title?.toLowerCase() || "";
@@ -1226,9 +1226,20 @@ ISBN: ${b.isbn || ""}
 
                 });
 
-                 if (!book) {
-                 return null;
-                }
+            if (livrosValidos.length === 0) {
+                return null;
+            }
+
+            const book =
+                livrosValidos.find(
+                    item =>
+                        item.number_of_pages_median
+                ) ||
+                livrosValidos[0];
+
+            if (!book) {
+                return null;
+            }
 
             return {
 
@@ -1282,7 +1293,7 @@ ISBN: ${b.isbn || ""}
             }
 
             const url =
-                `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&maxResults=10`;
+                `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&maxResults=40`;
 
             const res = await fetch(url);
 
@@ -1296,23 +1307,25 @@ ISBN: ${b.isbn || ""}
                 return null;
             }
 
-            // Procura um resultado que tenha páginas
-            const resultado =
-                data.items.find(item => {
+            const buscaTitulo =
+                bookTitle.toLowerCase();
+
+            const buscaAutor =
+                bookAuthor.toLowerCase();
+
+            const resultadosValidos =
+                data.items.filter(item => {
+
+                    const info =
+                        item.volumeInfo || {};
 
                     const titulo =
-                        item.volumeInfo?.title?.toLowerCase() || "";
+                        info.title?.toLowerCase() || "";
 
                     const autor =
-                        item.volumeInfo?.authors
+                        info.authors
                             ?.join(" ")
                             .toLowerCase() || "";
-
-                    const buscaTitulo =
-                        bookTitle.toLowerCase();
-
-                    const buscaAutor =
-                        bookAuthor.toLowerCase();
 
                     const tituloConfere =
                         !buscaTitulo ||
@@ -1326,12 +1339,24 @@ ISBN: ${b.isbn || ""}
 
                 });
 
-            if (!resultado) {
+            if (resultadosValidos.length === 0) {
                 return null;
             }
 
+            // Primeiro tenta um resultado que tenha número de páginas
+            const resultadoComPaginas =
+                resultadosValidos.find(
+                    item =>
+                        item.volumeInfo?.pageCount
+                );
+
+            // Se nenhum tiver páginas, usa o primeiro resultado correto
+            const resultado =
+                resultadoComPaginas ||
+                resultadosValidos[0];
+
             const book =
-                resultado.volumeInfo;
+                resultado.volumeInfo || {};
 
             const isbn13 =
                 book.industryIdentifiers?.find(

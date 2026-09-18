@@ -1198,10 +1198,37 @@ ISBN: ${b.isbn || ""}
 
             // Procura o primeiro resultado que realmente tenha páginas
             const book =
-                data.docs.find(
-                    item =>
-                        item.number_of_pages_median
-                ) || data.docs[0];
+                data.docs.find(item => {
+
+                    const titulo =
+                        item.title?.toLowerCase() || "";
+
+                    const autor =
+                        item.author_name
+                            ?.join(" ")
+                            .toLowerCase() || "";
+
+                    const buscaTitulo =
+                        bookTitle.toLowerCase();
+
+                    const buscaAutor =
+                        bookAuthor.toLowerCase();
+
+                    const tituloConfere =
+                        !buscaTitulo ||
+                        titulo.includes(buscaTitulo);
+
+                    const autorConfere =
+                        !buscaAutor ||
+                        autor.includes(buscaAutor);
+
+                    return tituloConfere && autorConfere;
+
+                });
+
+                 if (!book) {
+                 return null;
+                }
 
             return {
 
@@ -1271,10 +1298,37 @@ ISBN: ${b.isbn || ""}
 
             // Procura um resultado que tenha páginas
             const resultado =
-                data.items.find(
-                    item =>
-                        item.volumeInfo?.pageCount
-                ) || data.items[0];
+                data.items.find(item => {
+
+                    const titulo =
+                        item.volumeInfo?.title?.toLowerCase() || "";
+
+                    const autor =
+                        item.volumeInfo?.authors
+                            ?.join(" ")
+                            .toLowerCase() || "";
+
+                    const buscaTitulo =
+                        bookTitle.toLowerCase();
+
+                    const buscaAutor =
+                        bookAuthor.toLowerCase();
+
+                    const tituloConfere =
+                        !buscaTitulo ||
+                        titulo.includes(buscaTitulo);
+
+                    const autorConfere =
+                        !buscaAutor ||
+                        autor.includes(buscaAutor);
+
+                    return tituloConfere && autorConfere;
+
+                });
+
+            if (!resultado) {
+                return null;
+            }
 
             const book =
                 resultado.volumeInfo;

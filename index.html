@@ -1207,8 +1207,9 @@ ISBN: ${b.isbn || ""}
                     book.author_name || [],
 
                 pageCount:
-                    book.number_of_pages_median || "",
-
+                    book.number_of_pages_median
+                        ? Number(book.number_of_pages_median)
+                        : "",
                 isbn:
                     book.isbn?.[0] || isbnValue || "",
 
@@ -1275,7 +1276,9 @@ ISBN: ${b.isbn || ""}
                     book.authors || [],
 
                 pageCount:
-                    book.pageCount || "",
+                    book.pageCount
+                        ? Number(book.pageCount)
+                        : "",
 
                 isbn:
                     isbn13 ||
@@ -1351,10 +1354,7 @@ ISBN: ${b.isbn || ""}
 
                 authors,
 
-                pageCount:
-                    item.page
-                        ? calcularPaginasCrossref(item.page)
-                        : "",
+                pageCount: "",
 
                 isbn,
 
@@ -1418,8 +1418,12 @@ ISBN: ${b.isbn || ""}
                     final.authors = livro.authors;
                 }
 
-                if (!final.pageCount && livro.pageCount) {
-                    final.pageCount = livro.pageCount;
+                if (
+                    !final.pageCount &&
+                    livro.pageCount &&
+                    !isNaN(Number(livro.pageCount))
+                ) {
+                    final.pageCount = Number(livro.pageCount);
                 }
 
                 if (!final.isbn && livro.isbn) {

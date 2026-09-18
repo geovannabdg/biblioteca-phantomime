@@ -1231,11 +1231,28 @@ ISBN: ${b.isbn || ""}
             }
 
             const book =
-                livrosValidos.find(
-                    item =>
-                        item.number_of_pages_median
-                ) ||
-                livrosValidos[0];
+                data.docs.find(item => {
+
+                    const titulo =
+                        item.title?.toLowerCase() || "";
+
+                    return titulo === bookTitle.toLowerCase();
+
+                }) ||
+                data.docs.find(item => {
+
+                    const titulo =
+                        item.title?.toLowerCase() || "";
+
+                    return titulo.includes(
+                        bookTitle.toLowerCase()
+                    );
+
+                });
+
+            if (!book) {
+                return null;
+            }
 
             if (!book) {
                 return null;

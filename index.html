@@ -1173,7 +1173,7 @@ ISBN: ${b.isbn || ""}
             if (isbnValue) {
 
                 url =
-                    `https://openlibrary.org/search.json?isbn=${encodeURIComponent(isbnValue)}&limit=1`;
+                    `https://openlibrary.org/search.json?isbn=${encodeURIComponent(isbnValue)}&limit=5`;
 
             } else {
 
@@ -1182,7 +1182,6 @@ ISBN: ${b.isbn || ""}
 
                 url =
                     `https://openlibrary.org/search.json?q=${encodeURIComponent(query)}&limit=5`;
-
             }
 
             const res = await fetch(url);
@@ -1197,11 +1196,17 @@ ISBN: ${b.isbn || ""}
                 return null;
             }
 
-            const book = data.docs[0];
+            // Procura o primeiro resultado que realmente tenha páginas
+            const book =
+                data.docs.find(
+                    item =>
+                        item.number_of_pages_median
+                ) || data.docs[0];
 
             return {
 
-                title: book.title || "",
+                title:
+                    book.title || "",
 
                 authors:
                     book.author_name || [],
@@ -1210,8 +1215,11 @@ ISBN: ${b.isbn || ""}
                     book.number_of_pages_median
                         ? Number(book.number_of_pages_median)
                         : "",
+
                 isbn:
-                    book.isbn?.[0] || isbnValue || "",
+                    isbnValue ||
+                    book.isbn?.[0] ||
+                    "",
 
                 cover:
                     book.cover_i
@@ -1229,19 +1237,25 @@ ISBN: ${b.isbn || ""}
 
                 query = `isbn:${isbnValue}`;
 
+            } else if (bookTitle && bookAuthor) {
+
+                query =
+                    `intitle:${bookTitle} inauthor:${bookAuthor}`;
+
+            } else if (bookTitle) {
+
+                query =
+                    `intitle:${bookTitle}`;
+
             } else {
 
                 query =
-                    `${bookTitle} ${bookAuthor}`.trim();
+                    `inauthor:${bookAuthor}`;
 
-            }
-
-            if (!query) {
-                return null;
             }
 
             const url =
-                `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}`;
+                `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&maxResults=10`;
 
             const res = await fetch(url);
 
@@ -1255,7 +1269,15 @@ ISBN: ${b.isbn || ""}
                 return null;
             }
 
-            const book = data.items[0].volumeInfo;
+            // Procura um resultado que tenha páginas
+            const resultado =
+                data.items.find(
+                    item =>
+                        item.volumeInfo?.pageCount
+                ) || data.items[0];
+
+            const book =
+                resultado.volumeInfo;
 
             const isbn13 =
                 book.industryIdentifiers?.find(
@@ -1408,30 +1430,44 @@ ISBN: ${b.isbn || ""}
             for (const livro of resultados) {
 
                 if (!final.title && livro.title) {
-                    final.title = livro.title;
+
+                    final.title =
+                        livro.title;
+
                 }
 
                 if (
                     final.authors.length === 0 &&
                     livro.authors?.length
                 ) {
-                    final.authors = livro.authors;
+
+                    final.authors =
+                        livro.authors;
+
                 }
 
                 if (
                     !final.pageCount &&
-                    livro.pageCount &&
-                    !isNaN(Number(livro.pageCount))
+                    livro.pageCount
                 ) {
-                    final.pageCount = Number(livro.pageCount);
+
+                    final.pageCount =
+                        Number(livro.pageCount);
+
                 }
 
                 if (!final.isbn && livro.isbn) {
-                    final.isbn = livro.isbn;
+
+                    final.isbn =
+                        livro.isbn;
+
                 }
 
                 if (!final.cover && livro.cover) {
-                    final.cover = livro.cover;
+
+                    final.cover =
+                        livro.cover;
+
                 }
 
             }

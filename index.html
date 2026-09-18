@@ -1173,7 +1173,7 @@ ISBN: ${b.isbn || ""}
             if (isbnValue) {
 
                 url =
-                    `https://openlibrary.org/search.json?isbn=${encodeURIComponent(isbnValue)}&limit=5`;
+                    `https://openlibrary.org/search.json?isbn=${encodeURIComponent(isbnValue)}&limit=10`;
 
             } else {
 
@@ -1181,7 +1181,7 @@ ISBN: ${b.isbn || ""}
                     `${bookTitle} ${bookAuthor}`.trim();
 
                 url =
-                    `https://openlibrary.org/search.json?q=${encodeURIComponent(query)}&limit=5`;
+                    `https://openlibrary.org/search.json?q=${encodeURIComponent(query)}&limit=10`;
             }
 
             const res = await fetch(url);
@@ -1196,67 +1196,63 @@ ISBN: ${b.isbn || ""}
                 return null;
             }
 
-            // Procura o primeiro resultado que realmente tenha páginas
-            const livrosValidos =
-                data.docs.filter(item => {
+            const buscaTitulo =
+                bookTitle.toLowerCase();
 
-                    const titulo =
-                        item.title?.toLowerCase() || "";
+            const buscaAutor =
+                bookAuthor.toLowerCase();
 
-                    const autor =
-                        item.author_name
-                            ?.join(" ")
-                            .toLowerCase() || "";
+            let livrosValidos;
 
-                    const buscaTitulo =
-                        bookTitle.toLowerCase();
+            if (isbnValue) {
 
-                    const buscaAutor =
-                        bookAuthor.toLowerCase();
+                livrosValidos =
+                    data.docs;
 
-                    const tituloConfere =
-                        !buscaTitulo ||
-                        titulo.includes(buscaTitulo);
+            } else {
 
-                    const autorConfere =
-                        !buscaAutor ||
-                        autor.includes(buscaAutor);
+                livrosValidos =
+                    data.docs.filter(item => {
 
-                    return tituloConfere && autorConfere;
+                        const titulo =
+                            item.title?.toLowerCase() || "";
 
-                });
+                        const autor =
+                            item.author_name
+                                ?.join(" ")
+                                .toLowerCase() || "";
+
+                        const tituloConfere =
+                            !buscaTitulo ||
+                            titulo.includes(buscaTitulo);
+
+                        const autorConfere =
+                            !buscaAutor ||
+                            autor.includes(buscaAutor);
+
+                        return tituloConfere && autorConfere;
+
+                    });
+            }
 
             if (livrosValidos.length === 0) {
                 return null;
             }
 
+            /*
+             * Primeiro tenta encontrar um resultado
+             * que tenha páginas.
+             *
+             * Se não tiver, usa o primeiro resultado
+             * correto.
+             */
+
             const book =
-                data.docs.find(item => {
-
-                    const titulo =
-                        item.title?.toLowerCase() || "";
-
-                    return titulo === bookTitle.toLowerCase();
-
-                }) ||
-                data.docs.find(item => {
-
-                    const titulo =
-                        item.title?.toLowerCase() || "";
-
-                    return titulo.includes(
-                        bookTitle.toLowerCase()
-                    );
-
-                });
-
-            if (!book) {
-                return null;
-            }
-
-            if (!book) {
-                return null;
-            }
+                livrosValidos.find(
+                    item =>
+                        item.number_of_pages_median
+                ) ||
+                livrosValidos[0];
 
             return {
 
@@ -1284,13 +1280,15 @@ ISBN: ${b.isbn || ""}
             };
         }
 
+
         async function buscarGoogleBooks(isbnValue, bookTitle, bookAuthor) {
 
             let query;
 
             if (isbnValue) {
 
-                query = `isbn:${isbnValue}`;
+                query =
+                    `isbn:${isbnValue}`;
 
             } else if (bookTitle && bookAuthor) {
 
@@ -1330,44 +1328,56 @@ ISBN: ${b.isbn || ""}
             const buscaAutor =
                 bookAuthor.toLowerCase();
 
-            const resultado =
-                data.items.find(item => {
+            let resultadosValidos;
 
-                    const titulo =
-                        item.volumeInfo?.title?.toLowerCase() || "";
+            if (isbnValue) {
 
-                    return titulo === bookTitle.toLowerCase();
+                resultadosValidos =
+                    data.items;
 
-                }) ||
-                data.items.find(item => {
+            } else {
 
-                    const titulo =
-                        item.volumeInfo?.title?.toLowerCase() || "";
+                resultadosValidos =
+                    data.items.filter(item => {
 
-                    return titulo.includes(
-                        bookTitle.toLowerCase()
-                    );
+                        const info =
+                            item.volumeInfo || {};
 
-                });
+                        const titulo =
+                            info.title?.toLowerCase() || "";
 
-            if (!resultado) {
-                return null;
+                        const autor =
+                            info.authors
+                                ?.join(" ")
+                                .toLowerCase() || "";
+
+                        const tituloConfere =
+                            !buscaTitulo ||
+                            titulo.includes(buscaTitulo);
+
+                        const autorConfere =
+                            !buscaAutor ||
+                            autor.includes(buscaAutor);
+
+                        return tituloConfere && autorConfere;
+
+                    });
             }
 
             if (resultadosValidos.length === 0) {
                 return null;
             }
 
-            // Primeiro tenta um resultado que tenha número de páginas
-            const resultadoComPaginas =
+            /*
+             * Primeiro tenta um resultado correto
+             * que tenha número de páginas.
+             */
+
+            const resultado =
                 resultadosValidos.find(
                     item =>
                         item.volumeInfo?.pageCount
-                );
-
-            // Se nenhum tiver páginas, usa o primeiro resultado correto
-            const resultado =
-                resultadoComPaginas ||
+                ) ||
                 resultadosValidos[0];
 
             const book =
@@ -1375,12 +1385,14 @@ ISBN: ${b.isbn || ""}
 
             const isbn13 =
                 book.industryIdentifiers?.find(
-                    item => item.type === "ISBN_13"
+                    item =>
+                        item.type === "ISBN_13"
                 )?.identifier || "";
 
             const isbn10 =
                 book.industryIdentifiers?.find(
-                    item => item.type === "ISBN_10"
+                    item =>
+                        item.type === "ISBN_10"
                 )?.identifier || "";
 
             return {
@@ -1412,13 +1424,19 @@ ISBN: ${b.isbn || ""}
             };
         }
 
-        async function buscarCrossref(isbnValue, bookTitle, bookAuthor) {
 
-            let query = "";
+        async function buscarCrossref(
+            isbnValue,
+            bookTitle,
+            bookAuthor
+        ) {
+
+            let query;
 
             if (isbnValue) {
 
-                query = isbnValue;
+                query =
+                    isbnValue;
 
             } else {
 
@@ -1434,13 +1452,15 @@ ISBN: ${b.isbn || ""}
             const url =
                 `https://api.crossref.org/v1/works?query.bibliographic=${encodeURIComponent(query)}&rows=5`;
 
-            const res = await fetch(url);
+            const res =
+                await fetch(url);
 
             if (!res.ok) {
                 throw new Error("Erro no Crossref");
             }
 
-            const data = await res.json();
+            const data =
+                await res.json();
 
             if (
                 !data.message ||
@@ -1450,12 +1470,8 @@ ISBN: ${b.isbn || ""}
                 return null;
             }
 
-            const item = data.message.items[0];
-
-            const isbn =
-                item.ISBN?.[0] ||
-                isbnValue ||
-                "";
+            const item =
+                data.message.items[0];
 
             const authors =
                 item.author?.map(
@@ -1472,42 +1488,16 @@ ISBN: ${b.isbn || ""}
 
                 pageCount: "",
 
-                isbn,
+                isbn:
+                    item.ISBN?.[0] ||
+                    isbnValue ||
+                    "",
 
                 cover: ""
 
             };
         }
 
-        function calcularPaginasCrossref(page) {
-
-            if (!page) {
-                return "";
-            }
-
-            const partes =
-                page.split("-");
-
-            if (partes.length !== 2) {
-                return "";
-            }
-
-            const inicio =
-                parseInt(partes[0]);
-
-            const fim =
-                parseInt(partes[1]);
-
-            if (
-                isNaN(inicio) ||
-                isNaN(fim) ||
-                fim < inicio
-            ) {
-                return "";
-            }
-
-            return fim - inicio + 1;
-        }
 
         function combinarResultados(resultados) {
 
@@ -1569,10 +1559,12 @@ ISBN: ${b.isbn || ""}
             return final;
         }
 
+
         async function searchISBN(button) {
 
             const isbnValue =
-                isbn.value.replace(/[-\s]/g, "");
+                isbn.value
+                    .replace(/[-\s]/g, "");
 
             const bookTitle =
                 searchTitle.value.trim();
@@ -1580,38 +1572,42 @@ ISBN: ${b.isbn || ""}
             const bookAuthor =
                 searchAuthor.value.trim();
 
-            if (!isbnValue && !bookTitle && !bookAuthor) {
+            if (
+                !isbnValue &&
+                !bookTitle &&
+                !bookAuthor
+            ) {
 
-                alert("Digite um ISBN, título ou autor.");
+                alert(
+                    "Digite um ISBN, título ou autor."
+                );
 
                 return;
-
             }
 
-            button.innerText = "🔎 Buscando...";
+            button.innerText =
+                "🔎 Buscando...";
 
             const resultados = [];
 
             try {
 
                 // =========================
-                // 1. OPEN LIBRARY
+                // OPEN LIBRARY
                 // =========================
 
                 try {
 
-                    const resultadoOpenLibrary =
+                    const resultado =
                         await buscarOpenLibrary(
                             isbnValue,
                             bookTitle,
                             bookAuthor
                         );
 
-                    if (resultadoOpenLibrary) {
+                    if (resultado) {
 
-                        resultados.push(
-                            resultadoOpenLibrary
-                        );
+                        resultados.push(resultado);
 
                     }
 
@@ -1626,23 +1622,21 @@ ISBN: ${b.isbn || ""}
 
 
                 // =========================
-                // 2. GOOGLE BOOKS
+                // GOOGLE BOOKS
                 // =========================
 
                 try {
 
-                    const resultadoGoogleBooks =
+                    const resultado =
                         await buscarGoogleBooks(
                             isbnValue,
                             bookTitle,
                             bookAuthor
                         );
 
-                    if (resultadoGoogleBooks) {
+                    if (resultado) {
 
-                        resultados.push(
-                            resultadoGoogleBooks
-                        );
+                        resultados.push(resultado);
 
                     }
 
@@ -1655,20 +1649,23 @@ ISBN: ${b.isbn || ""}
 
                 }
 
+
+                // =========================
+                // CROSSREF
+                // =========================
+
                 try {
 
-                    const resultadoCrossref =
+                    const resultado =
                         await buscarCrossref(
                             isbnValue,
                             bookTitle,
                             bookAuthor
                         );
 
-                    if (resultadoCrossref) {
+                    if (resultado) {
 
-                        resultados.push(
-                            resultadoCrossref
-                        );
+                        resultados.push(resultado);
 
                     }
 
@@ -1702,7 +1699,9 @@ ISBN: ${b.isbn || ""}
                 // =========================
 
                 const resultadoFinal =
-                    combinarResultados(resultados);
+                    combinarResultados(
+                        resultados
+                    );
 
 
                 // =========================
@@ -1719,13 +1718,18 @@ ISBN: ${b.isbn || ""}
                     resultadoFinal.pageCount || "";
 
                 isbn.value =
-                    resultadoFinal.isbn || isbnValue || "";
+                    resultadoFinal.isbn ||
+                    isbnValue ||
+                    "";
 
                 if (resultadoFinal.cover) {
 
                     cover.value =
                         resultadoFinal.cover
-                            .replace("http:", "https:");
+                            .replace(
+                                "http:",
+                                "https:"
+                            );
 
                 }
 

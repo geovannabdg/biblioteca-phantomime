@@ -324,7 +324,7 @@
             <div id="profileLabel" class="small"></div>
 
             <button onclick="adminAccess()">
-                 Admin
+                Admin
             </button>
 
         </div>
@@ -385,9 +385,9 @@
 
     <script>
 
-       const API_URL = "https://phantomime-backend.onrender.com/data";
-       
-       let books = [];
+        const API_URL = "https://phantomime-backend.onrender.com/data";
+
+        let books = [];
         let profile = null;
         let currentTab = "Todos";
         let editIndex = null;
@@ -1038,23 +1038,23 @@ ISBN: ${b.isbn || ""}
 
             };
 
-            
+
 
             if (editIndex !== null) {
 
-                    books[editIndex] = book;
+                books[editIndex] = book;
 
-                    editIndex = null;
+                editIndex = null;
 
-                    form.querySelector("button[type='submit']").innerText = "Adicionar";
+                form.querySelector("button[type='submit']").innerText = "Adicionar";
 
             } else {
 
-                    books.push(book);
+                books.push(book);
 
-             }
+            }
 
-            
+
 
             await save();
             createTabs();
@@ -1166,136 +1166,324 @@ ISBN: ${b.isbn || ""}
 
         }
 
+        async function buscarOpenLibrary(isbnValue, bookTitle, bookAuthor) {
+
+            let url;
+
+            if (isbnValue) {
+
+                url =
+                    `https://openlibrary.org/search.json?isbn=${encodeURIComponent(isbnValue)}&limit=1`;
+
+            } else {
+
+                const query =
+                    `${bookTitle} ${bookAuthor}`.trim();
+
+                url =
+                    `https://openlibrary.org/search.json?q=${encodeURIComponent(query)}&limit=5`;
+
+            }
+
+            const res = await fetch(url);
+
+            if (!res.ok) {
+                throw new Error("Erro na Open Library");
+            }
+
+            const data = await res.json();
+
+            if (!data.docs || data.docs.length === 0) {
+                return null;
+            }
+
+            const book = data.docs[0];
+
+            return {
+
+                title: book.title || "",
+
+                authors:
+                    book.author_name || [],
+
+                pageCount:
+                    book.number_of_pages_median || "",
+
+                isbn:
+                    book.isbn?.[0] || isbnValue || "",
+
+                cover:
+                    book.cover_i
+                        ? `https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg`
+                        : ""
+
+            };
+        }
+
+        async function buscarGoogleBooks(isbnValue, bookTitle, bookAuthor) {
+
+            let query;
+
+            if (isbnValue) {
+
+                query = `isbn:${isbnValue}`;
+
+            } else {
+
+                query =
+                    `${bookTitle} ${bookAuthor}`.trim();
+
+            }
+
+            if (!query) {
+                return null;
+            }
+
+            const url =
+                `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}`;
+
+            const res = await fetch(url);
+
+            if (!res.ok) {
+                throw new Error("Erro no Google Books");
+            }
+
+            const data = await res.json();
+
+            if (!data.items || data.items.length === 0) {
+                return null;
+            }
+
+            const book = data.items[0].volumeInfo;
+
+            const isbn13 =
+                book.industryIdentifiers?.find(
+                    item => item.type === "ISBN_13"
+                )?.identifier || "";
+
+            const isbn10 =
+                book.industryIdentifiers?.find(
+                    item => item.type === "ISBN_10"
+                )?.identifier || "";
+
+            return {
+
+                title:
+                    book.title || "",
+
+                authors:
+                    book.authors || [],
+
+                pageCount:
+                    book.pageCount || "",
+
+                isbn:
+                    isbn13 ||
+                    isbn10 ||
+                    isbnValue ||
+                    "",
+
+                cover:
+                    book.imageLinks?.extraLarge ||
+                    book.imageLinks?.large ||
+                    book.imageLinks?.medium ||
+                    book.imageLinks?.thumbnail ||
+                    ""
+
+            };
+        }
+
+        function combinarResultados(resultados) {
+
+            const final = {
+
+                title: "",
+                authors: [],
+                pageCount: "",
+                isbn: "",
+                cover: ""
+
+            };
+
+            for (const livro of resultados) {
+
+                if (!final.title && livro.title) {
+                    final.title = livro.title;
+                }
+
+                if (
+                    final.authors.length === 0 &&
+                    livro.authors?.length
+                ) {
+                    final.authors = livro.authors;
+                }
+
+                if (!final.pageCount && livro.pageCount) {
+                    final.pageCount = livro.pageCount;
+                }
+
+                if (!final.isbn && livro.isbn) {
+                    final.isbn = livro.isbn;
+                }
+
+                if (!final.cover && livro.cover) {
+                    final.cover = livro.cover;
+                }
+
+            }
+
+            return final;
+        }
+
         async function searchISBN(button) {
 
-            const isbnValue = isbn.value.replace(/[-\s]/g, "");
-            console.log("ISBN pesquisado:", isbnValue);
+            const isbnValue =
+                isbn.value.replace(/[-\s]/g, "");
 
-            const bookTitle = searchTitle.value.trim();
+            const bookTitle =
+                searchTitle.value.trim();
 
-            const bookAuthor = searchAuthor.value.trim();
+            const bookAuthor =
+                searchAuthor.value.trim();
 
+            if (!isbnValue && !bookTitle && !bookAuthor) {
+
+                alert("Digite um ISBN, título ou autor.");
+
+                return;
+
+            }
 
             button.innerText = "🔎 Buscando...";
 
-            await new Promise(resolve => setTimeout(resolve, 1000));
-
+            const resultados = [];
 
             try {
 
-                let result = null;
+                // =========================
+                // 1. OPEN LIBRARY
+                // =========================
 
+                try {
 
-                if (isbnValue) {
+                    const resultadoOpenLibrary =
+                        await buscarOpenLibrary(
+                            isbnValue,
+                            bookTitle,
+                            bookAuthor
+                        );
 
-                    let res = await fetch(
-                        `https://openlibrary.org/api/books?bibkeys=ISBN:${isbnValue}&format=json&jscmd=data`
-                    );
+                    if (resultadoOpenLibrary) {
 
-                    let data = await res.json();
-
-                    let key = `ISBN:${isbnValue}`;
-
-
-                    if (data[key]) {
-
-                        result = {
-                            title: data[key].title,
-
-                            authors: data[key].authors
-                                ? data[key].authors.map(a => a.name)
-                                : [],
-
-                            pageCount: data[key].number_of_pages,
-
-                            imageLinks: {
-                                thumbnail:
-                                    `https://covers.openlibrary.org/b/isbn/${isbnValue}-L.jpg`
-                            }
-                        };
+                        resultados.push(
+                            resultadoOpenLibrary
+                        );
 
                     }
+
+                } catch (erro) {
+
+                    console.warn(
+                        "Open Library falhou:",
+                        erro
+                    );
 
                 }
 
-                if (!result && (bookTitle || bookAuthor)) {
 
-                    let query = "";
+                // =========================
+                // 2. GOOGLE BOOKS
+                // =========================
 
-                    if (bookTitle && bookAuthor) {
-                        query = `${bookTitle} ${bookAuthor}`;
-                    } else {
-                        query = bookTitle || bookAuthor;
+                try {
+
+                    const resultadoGoogleBooks =
+                        await buscarGoogleBooks(
+                            isbnValue,
+                            bookTitle,
+                            bookAuthor
+                        );
+
+                    if (resultadoGoogleBooks) {
+
+                        resultados.push(
+                            resultadoGoogleBooks
+                        );
+
                     }
 
+                } catch (erro) {
 
-                    let res = await fetch(
-                        `https://openlibrary.org/search.json?q=${encodeURIComponent(query)}`
+                    console.warn(
+                        "Google Books falhou:",
+                        erro
                     );
-
-
-                    let data = await res.json();
-
-
-                    if (data.docs && data.docs.length > 0) {
-
-                        let book = data.docs[0];
-
-
-                        result = {
-
-                            title: book.title || "",
-
-                            authors: book.author_name || [],
-
-                            pageCount: book.number_of_pages_median
-                                || book.number_of_pages
-                                || "",
-
-                            imageLinks: book.cover_i
-                                ? {
-                                    thumbnail:
-                                        `https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg`
-                                }
-                                : null
-
-                        };
-
-                    }
 
                 }
 
-                if (!result) {
-                    alert("Livro não encontrado. Preencha manualmente.");
+
+                // =========================
+                // NENHUM RESULTADO
+                // =========================
+
+                if (resultados.length === 0) {
+
+                    alert(
+                        "Livro não encontrado. Preencha manualmente."
+                    );
+
                     return;
+
                 }
 
 
-                title.value = result.title || "";
+                // =========================
+                // JUNTAR RESULTADOS
+                // =========================
 
-                author.value = result.authors
-                    ? result.authors.join(", ")
-                    : "";
-
-                pages.value = result.pageCount || "";
+                const resultadoFinal =
+                    combinarResultados(resultados);
 
 
-                if (result.imageLinks) {
+                // =========================
+                // PREENCHER FORMULÁRIO
+                // =========================
+
+                title.value =
+                    resultadoFinal.title || "";
+
+                author.value =
+                    resultadoFinal.authors?.join(", ") || "";
+
+                pages.value =
+                    resultadoFinal.pageCount || "";
+
+                isbn.value =
+                    resultadoFinal.isbn || isbnValue || "";
+
+                if (resultadoFinal.cover) {
 
                     cover.value =
-                        result.imageLinks.thumbnail
+                        resultadoFinal.cover
                             .replace("http:", "https:");
 
                 }
 
+            } catch (erro) {
 
-            } catch (e) {
+                console.error(
+                    "Erro geral na busca:",
+                    erro
+                );
 
-                alert("Erro na busca");
+                alert(
+                    "Ocorreu um erro durante a busca."
+                );
 
             } finally {
 
-                button.innerText = "🔎 Buscar Livro";
+                button.innerText =
+                    "🔎 Buscar Livro";
 
             }
 

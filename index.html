@@ -1313,31 +1313,29 @@ ISBN: ${b.isbn || ""}
             const buscaAutor =
                 bookAuthor.toLowerCase();
 
-            const resultadosValidos =
-                data.items.filter(item => {
-
-                    const info =
-                        item.volumeInfo || {};
+            const resultado =
+                data.items.find(item => {
 
                     const titulo =
-                        info.title?.toLowerCase() || "";
+                        item.volumeInfo?.title?.toLowerCase() || "";
 
-                    const autor =
-                        info.authors
-                            ?.join(" ")
-                            .toLowerCase() || "";
+                    return titulo === bookTitle.toLowerCase();
 
-                    const tituloConfere =
-                        !buscaTitulo ||
-                        titulo.includes(buscaTitulo);
+                }) ||
+                data.items.find(item => {
 
-                    const autorConfere =
-                        !buscaAutor ||
-                        autor.includes(buscaAutor);
+                    const titulo =
+                        item.volumeInfo?.title?.toLowerCase() || "";
 
-                    return tituloConfere && autorConfere;
+                    return titulo.includes(
+                        bookTitle.toLowerCase()
+                    );
 
                 });
+
+            if (!resultado) {
+                return null;
+            }
 
             if (resultadosValidos.length === 0) {
                 return null;

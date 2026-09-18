@@ -1293,6 +1293,106 @@ ISBN: ${b.isbn || ""}
             };
         }
 
+        async function buscarCrossref(isbnValue, bookTitle, bookAuthor) {
+
+            let query = "";
+
+            if (isbnValue) {
+
+                query = isbnValue;
+
+            } else {
+
+                query =
+                    `${bookTitle} ${bookAuthor}`.trim();
+
+            }
+
+            if (!query) {
+                return null;
+            }
+
+            const url =
+                `https://api.crossref.org/v1/works?query.bibliographic=${encodeURIComponent(query)}&rows=5`;
+
+            const res = await fetch(url);
+
+            if (!res.ok) {
+                throw new Error("Erro no Crossref");
+            }
+
+            const data = await res.json();
+
+            if (
+                !data.message ||
+                !data.message.items ||
+                data.message.items.length === 0
+            ) {
+                return null;
+            }
+
+            const item = data.message.items[0];
+
+            const isbn =
+                item.ISBN?.[0] ||
+                isbnValue ||
+                "";
+
+            const authors =
+                item.author?.map(
+                    autor =>
+                        `${autor.given || ""} ${autor.family || ""}`.trim()
+                ) || [];
+
+            return {
+
+                title:
+                    item.title?.[0] || "",
+
+                authors,
+
+                pageCount:
+                    item.page
+                        ? calcularPaginasCrossref(item.page)
+                        : "",
+
+                isbn,
+
+                cover: ""
+
+            };
+        }
+
+        function calcularPaginasCrossref(page) {
+
+            if (!page) {
+                return "";
+            }
+
+            const partes =
+                page.split("-");
+
+            if (partes.length !== 2) {
+                return "";
+            }
+
+            const inicio =
+                parseInt(partes[0]);
+
+            const fim =
+                parseInt(partes[1]);
+
+            if (
+                isNaN(inicio) ||
+                isNaN(fim) ||
+                fim < inicio
+            ) {
+                return "";
+            }
+
+            return fim - inicio + 1;
+        }
+
         function combinarResultados(resultados) {
 
             const final = {
@@ -1416,6 +1516,32 @@ ISBN: ${b.isbn || ""}
 
                     console.warn(
                         "Google Books falhou:",
+                        erro
+                    );
+
+                }
+
+                try {
+
+                    const resultadoCrossref =
+                        await buscarCrossref(
+                            isbnValue,
+                            bookTitle,
+                            bookAuthor
+                        );
+
+                    if (resultadoCrossref) {
+
+                        resultados.push(
+                            resultadoCrossref
+                        );
+
+                    }
+
+                } catch (erro) {
+
+                    console.warn(
+                        "Crossref falhou:",
                         erro
                     );
 
